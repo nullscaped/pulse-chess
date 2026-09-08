@@ -27,6 +27,7 @@ It combines online matchmaking, player accounts, Elo ratings, leaderboards, priv
 <p align="center">
   <img src="assets/demo/win-result.gif" alt="Pulse Chess win result screen" width="850">
 </p>
+
 ---
 
 ## Features

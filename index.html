@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08090d">
+    <title>Pulse Chess</title>
+    <link rel="preconnect" href="https://accounts.google.com">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body data-board-theme="midnight">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="noise"></div>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <button id="logo-button" class="logo-button" type="button">
+                <span class="logo-mark">♞</span>
+                <span>Pulse Chess</span>
+            </button>
+
+            <div class="nav-links">
+                <button id="home-button" class="nav-button active" type="button">Home</button>
+                <button id="nav-play-button" class="nav-button" type="button">Play</button>
+                <button id="leaderboard-button" class="nav-button" type="button">Leaderboard</button>
+                <button id="settings-button" class="nav-button" type="button">Settings</button>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <button id="login-button" class="login-button" type="button">Log In</button>
+            <button id="signup-button" class="signup-button" type="button">Sign Up</button>
+
+            <div id="user-nav" class="user-nav hidden">
+                <div class="nav-user-copy">
+                    <span id="nav-username" class="nav-username"></span>
+                    <span id="nav-rating" class="nav-rating"></span>
+                </div>
+                <button id="logout-button" class="ghost-button compact" type="button">Log Out</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="menu" class="home-page page-view">
+        <section class="hero">
+            <div class="hero-copy">
+                <div class="eyebrow"><span class="live-dot"></span> REAL-TIME MULTIPLAYER</div>
+                <h1>Chess that feels<br><span>alive.</span></h1>
+                <p class="hero-description">
+                    Fast matchmaking, live ratings, private games, leaderboards and a clean competitive board built for the browser.
+                </p>
+                <div class="hero-actions">
+                    <button id="hero-play-button" class="primary-button glow-button" type="button">Play now <span>→</span></button>
+                    <button id="hero-leaderboard-button" class="secondary-button" type="button">View leaderboard</button>
+                </div>
+                <div class="hero-stats">
+                    <div><strong id="hero-player-count">—</strong><span>Players</span></div>
+                    <div><strong>10:00</strong><span>Rapid</span></div>
+                    <div><strong>1200</strong><span>Starting Elo</span></div>
+                </div>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+                <div class="hero-ring ring-one"></div>
+                <div class="hero-ring ring-two"></div>
+                <div class="hero-knight">♞</div>
+                <div class="floating-card card-a"><span>⚡</span><b>Instant</b><small>matchmaking</small></div>
+                <div class="floating-card card-b"><span>↗</span><b>+18</b><small>ELO</small></div>
+            </div>
+        </section>
+
+        <section id="user-dashboard" class="dashboard-strip hidden">
+            <div class="dashboard-user">
+                <span id="dashboard-flag" class="dashboard-flag">🌐</span>
+                <div><small>Signed in as</small><strong id="dashboard-name">Player</strong></div>
+            </div>
+            <div class="dashboard-stat"><small>Rating</small><strong id="dashboard-rating">1200</strong></div>
+            <div class="dashboard-stat"><small>Wins</small><strong id="dashboard-wins">0</strong></div>
+            <div class="dashboard-stat"><small>Losses</small><strong id="dashboard-losses">0</strong></div>
+            <div class="dashboard-stat"><small>Draws</small><strong id="dashboard-draws">0</strong></div>
+        </section>
+
+        <section class="content-section play-section">
+            <div class="section-heading">
+                <div>
+                    <span class="section-kicker">PLAY</span>
+                    <h2>Choose your game</h2>
+                    <p>Jump into ranked, practice against the bot, or invite a friend.</p>
+                </div>
+            </div>
+
+            <div class="play-cards">
+                <button id="play-button" class="play-card featured-card" type="button">
+                    <div class="card-top"><span class="card-icon">⚔</span><span class="status-pill">RANKED</span></div>
+                    <div><h3>Quick Match</h3><p>Find another online player and put your Elo on the line.</p></div>
+                    <span class="card-action">Find match <b>→</b></span>
+                </button>
+
+                <button id="bot-button" class="play-card" type="button">
+                    <div class="card-top"><span class="card-icon">♟</span><span class="status-pill muted-pill">PRACTICE</span></div>
+                    <div><h3>Play Bot</h3><p>Warm up against Pulse Bot. Bot games are always unrated.</p></div>
+                    <span class="card-action">Play bot <b>→</b></span>
+                </button>
+
+                <button id="friend-button" class="play-card" type="button">
+                    <div class="card-top"><span class="card-icon">＋</span><span class="status-pill muted-pill">PRIVATE</span></div>
+                    <div><h3>Play Friend</h3><p>Create a private room code or join one from a friend.</p></div>
+                    <span class="card-action">Create room <b>→</b></span>
+                </button>
+            </div>
+        </section>
+
+        <section class="content-section home-grid">
+            <div class="panel-card leaderboard-preview">
+                <div class="panel-card-header">
+                    <div><span class="section-kicker">RANKINGS</span><h2>Top players</h2></div>
+                    <button id="preview-leaderboard-button" class="text-button" type="button">See all →</button>
+                </div>
+                <div id="home-leaderboard" class="mini-leaderboard">
+                    <div class="skeleton-row"></div><div class="skeleton-row"></div><div class="skeleton-row"></div>
+                </div>
+            </div>
+
+            <div class="panel-card recent-preview">
+                <div class="panel-card-header">
+                    <div><span class="section-kicker">YOUR GAMES</span><h2>Recent matches</h2></div>
+                </div>
+                <div id="recent-matches" class="recent-matches">
+                    <div class="empty-copy">Log in to see your recent games.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="leaderboard-page" class="page-view standalone-page hidden">
+        <div class="page-header">
+            <span class="section-kicker">COMPETITIVE</span>
+            <h1>Leaderboard</h1>
+            <p>See who is climbing fastest on Pulse Chess.</p>
+        </div>
+
+        <div class="toolbar-card">
+            <label>Board
+                <select id="leaderboard-scope">
+                    <option value="global">Global</option>
+                    <option value="country">My country</option>
+                </select>
+            </label>
+            <label>Show
+                <select id="leaderboard-limit">
+                    <option value="10">Top 10</option>
+                    <option value="25" selected>Top 25</option>
+                    <option value="50">Top 50</option>
+                </select>
+            </label>
+            <div id="leaderboard-scope-note" class="toolbar-note">Worldwide rankings</div>
+        </div>
+
+        <div class="leaderboard-card">
+            <div class="leaderboard-table-header"><span>#</span><span>Player</span><span>Record</span><span>Rating</span></div>
+            <div id="leaderboard-list" class="leaderboard-list"></div>
+        </div>
+    </section>
+
+    <section id="settings-page" class="page-view standalone-page hidden">
+        <div class="page-header">
+            <span class="section-kicker">PREFERENCES</span>
+            <h1>Settings</h1>
+            <p>Tune Pulse Chess to feel the way you want.</p>
+        </div>
+
+        <div class="settings-grid">
+            <div class="settings-card">
+                <div><h3>Match music</h3><p>Original procedural lo-fi ambience while you play.</p></div>
+                <label class="switch"><input id="setting-music" type="checkbox"><span></span></label>
+            </div>
+            <div class="settings-card">
+                <div><h3>Sound effects</h3><p>Moves, captures, match found and result sounds.</p></div>
+                <label class="switch"><input id="setting-sfx" type="checkbox"><span></span></label>
+            </div>
+            <div class="settings-card">
+                <div><h3>Motion</h3><p>Background movement, hover lift and result particles.</p></div>
+                <label class="switch"><input id="setting-motion" type="checkbox"><span></span></label>
+            </div>
+            <div class="settings-card select-setting">
+                <div><h3>Board theme</h3><p>Change the board without changing your pieces.</p></div>
+                <select id="setting-board-theme">
+                    <option value="midnight">Midnight</option>
+                    <option value="classic">Classic</option>
+                    <option value="emerald">Emerald</option>
+                </select>
+            </div>
+            <div class="settings-card volume-setting">
+                <div><h3>Volume</h3><p>Controls both match ambience and sound effects.</p></div>
+                <input id="setting-volume" type="range" min="0" max="100" step="1">
+            </div>
+        </div>
+
+        <div id="account-settings-card" class="account-settings-card hidden">
+            <div><span class="section-kicker">ACCOUNT</span><h2>Username</h2><p>3–20 characters. Letters, numbers and underscores only. Offensive usernames are blocked.</p></div>
+            <div class="username-editor">
+                <input id="settings-username" maxlength="20" autocomplete="off" placeholder="Username">
+                <button id="save-username-button" class="primary-button" type="button">Save</button>
+            </div>
+            <p id="settings-username-message" class="form-message"></p>
+        </div>
+    </section>
+
+    <section id="signup-page" class="auth-page page-view hidden">
+        <div class="auth-card glass-card">
+            <div class="auth-brand"><span class="logo-mark">♞</span><span>Pulse Chess</span></div>
+            <h1>Create your account</h1>
+            <p class="auth-subtitle">Start at 1200 Elo and build your record.</p>
+
+            <div id="google-signup-button" class="google-button-slot"></div>
+            <div class="auth-divider"><span>or use email</span></div>
+
+            <form id="signup-form">
+                <label for="signup-username">Username</label>
+                <input id="signup-username" type="text" placeholder="Username" autocomplete="username" maxlength="20" required>
+                <label for="signup-email">Email</label>
+                <input id="signup-email" type="email" placeholder="you@example.com" autocomplete="email" required>
+                <label for="signup-password">Password</label>
+                <input id="signup-password" type="password" placeholder="At least 8 characters" autocomplete="new-password" minlength="8" required>
+                <label for="signup-confirm-password">Confirm password</label>
+                <input id="signup-confirm-password" type="password" placeholder="Confirm password" autocomplete="new-password" minlength="8" required>
+                <p id="signup-error" class="auth-error"></p>
+                <button type="submit" class="auth-submit">Create Account</button>
+            </form>
+
+            <p class="auth-switch">Already have an account? <button id="signup-to-login" type="button">Log In</button></p>
+        </div>
+    </section>
+
+    <section id="login-page" class="auth-page page-view hidden">
+        <div class="auth-card glass-card">
+            <div class="auth-brand"><span class="logo-mark">♞</span><span>Pulse Chess</span></div>
+            <h1>Welcome back</h1>
+            <p class="auth-subtitle">Log in and get back on the board.</p>
+
+            <div id="google-login-button" class="google-button-slot"></div>
+            <div class="auth-divider"><span>or use email</span></div>
+
+            <form id="login-form">
+                <label for="login-email">Email</label>
+                <input id="login-email" type="email" placeholder="you@example.com" autocomplete="email" required>
+                <label for="login-password">Password</label>
+                <input id="login-password" type="password" placeholder="Password" autocomplete="current-password" required>
+                <p id="login-error" class="auth-error"></p>
+                <button type="submit" class="auth-submit">Log In</button>
+            </form>
+
+            <p class="auth-switch">Don't have an account? <button id="login-to-signup" type="button">Sign Up</button></p>
+        </div>
+    </section>
+
+    <section id="matchmaking" class="matchmaking page-view hidden">
+        <div class="matchmaking-card glass-card">
+            <div class="search-orbit"><div class="search-spinner"></div><div class="search-core">♞</div></div>
+            <span class="section-kicker">MATCHMAKING</span>
+            <h1 id="matchmaking-title">Finding opponent</h1>
+            <p id="matchmaking-status">Searching for a player near your rating…</p>
+            <div class="search-pulse"><span></span><span></span><span></span><span></span><span></span></div>
+            <button id="cancel-button" class="secondary-button" type="button">Cancel search</button>
+        </div>
+    </section>
+
+    <section id="game" class="game page-view hidden">
+        <div class="game-topbar">
+            <button id="back-button" class="icon-text-button" type="button">← Leave</button>
+            <div class="game-mode-pill" id="game-mode-pill">Rapid · Rated</div>
+            <button id="game-settings-button" class="icon-text-button" type="button">⚙ Settings</button>
+        </div>
+
+        <div class="game-layout">
+            <aside class="side-panel move-history">
+                <div class="side-panel-title"><span>Moves</span><small id="move-count">0</small></div>
+                <div id="move-list" class="move-list"></div>
+            </aside>
+
+            <div class="board-column">
+                <div id="black-player-card" class="player-card">
+                    <div class="player-avatar" id="black-avatar">B</div>
+                    <div class="player-card-copy"><strong id="black-player-name">Black</strong><span id="black-player-rating">1200</span></div>
+                    <div class="clock" id="black-clock">10:00</div>
+                </div>
+
+                <div id="chess-board" class="chess-board" aria-label="Chess board"></div>
+
+                <div id="white-player-card" class="player-card">
+                    <div class="player-avatar light-avatar" id="white-avatar">W</div>
+                    <div class="player-card-copy"><strong id="white-player-name">White</strong><span id="white-player-rating">1200</span></div>
+                    <div class="clock" id="white-clock">10:00</div>
+                </div>
+
+                <div class="game-info">
+                    <span>You are <strong id="player-color">-</strong></span>
+                    <span class="turn-dot"></span>
+                    <span>Turn: <strong id="turn-display">White</strong></span>
+                </div>
+                <p id="game-status" class="game-status"></p>
+                <div class="game-buttons"><button id="resign-button" class="danger-button" type="button">Resign</button></div>
+            </div>
+
+            <aside class="side-panel chat-panel">
+                <div class="side-panel-title"><span>Match chat</span><span class="online-dot"></span></div>
+                <div id="chat-messages" class="chat-messages"></div>
+                <div class="chat-input-area">
+                    <input id="chat-input" type="text" placeholder="Send a message…" maxlength="150">
+                    <button id="chat-send" type="button" aria-label="Send message">↑</button>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <div id="friend-modal" class="modal-backdrop hidden">
+        <div class="modal-card glass-card">
+            <button class="modal-close" id="friend-modal-close" type="button">×</button>
+            <span class="section-kicker">PRIVATE GAME</span>
+            <h2>Play a friend</h2>
+            <p>Create a room and send the code, or enter a code you received.</p>
+            <button id="create-private-button" class="primary-button full-button" type="button">Create private room</button>
+            <div class="auth-divider"><span>or join</span></div>
+            <div class="join-row"><input id="private-code-input" maxlength="6" placeholder="ABC123" autocomplete="off"><button id="join-private-button" class="secondary-button" type="button">Join</button></div>
+            <div id="private-code-panel" class="private-code-panel hidden"><small>Your room code</small><strong id="private-code-display">------</strong><button id="copy-private-code" class="text-button" type="button">Copy code</button><p>Waiting for your friend…</p></div>
+            <p id="private-error" class="auth-error"></p>
+        </div>
+    </div>
+
+    <div id="result-modal" class="modal-backdrop hidden">
+        <div class="result-card glass-card">
+            <div id="result-icon" class="result-icon">♛</div>
+            <span id="result-kicker" class="section-kicker">MATCH COMPLETE</span>
+            <h2 id="result-title">You Win!</h2>
+            <p id="result-reason">Checkmate</p>
+            <div id="rating-result" class="rating-result">
+                <span id="rating-old">1200</span><span>→</span><strong id="rating-new">1218</strong><b id="rating-delta" class="rating-gain">+18</b>
+            </div>
+            <div class="result-actions"><button id="result-rematch" class="primary-button" type="button">Play again</button><button id="result-home" class="secondary-button" type="button">Home</button></div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

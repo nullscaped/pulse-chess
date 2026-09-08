@@ -9,7 +9,6 @@ import { io } from "/socket.io/socket.io.esm.min.js";
 const GOOGLE_CLIENT_ID =
     "544555583922-6ga00tnd4m312vt3qfb8ts5htuhvklum.apps.googleusercontent.com";
 
-
 // DOM
 
 const navbar =

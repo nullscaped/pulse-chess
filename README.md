@@ -8,6 +8,28 @@ It combines online matchmaking, player accounts, Elo ratings, leaderboards, priv
 
 ---
 
+## Preview
+
+### Home
+
+<p align="center">
+  <img src="assets/demo/home.gif" alt="Pulse Chess home page" width="850">
+</p>
+
+### Matchmaking
+
+<p align="center">
+  <img src="assets/demo/matchmaking.gif" alt="Pulse Chess matchmaking animation" width="850">
+</p>
+
+### Match Results
+
+<p align="center">
+  <img src="assets/demo/win-result.gif" alt="Pulse Chess win result screen" width="850">
+</p>
+
+---
+
 ## Features
 
 ### Chess
@@ -124,6 +146,11 @@ PostgreSQL is used to store player accounts, ratings, statistics, and completed 
 pulse-chess/
 │
 ├── assets/
+│   ├── demo/
+│   │   ├── home.gif
+│   │   ├── matchmaking.gif
+│   │   └── win-result.gif
+│   │
 │   └── pieces/
 │       ├── bishop-b.svg
 │       ├── bishop-w.svg
@@ -143,11 +170,9 @@ pulse-chess/
 ├── script.js
 ├── server.js
 ├── pieces.js
-│
 ├── package.json
 ├── package-lock.json
 ├── .gitignore
-├── .env
 └── README.md
 ```
 
@@ -159,11 +184,6 @@ pulse-chess/
 
 ```bash
 git clone https://github.com/nullscaped/pulse-chess.git
-```
-
-Enter the project folder:
-
-```bash
 cd pulse-chess
 ```
 

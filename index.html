@@ -6,6 +6,8 @@
     <meta name="theme-color" content="#08090d">
     <title>Pulse Chess</title>
     <link rel="preconnect" href="https://accounts.google.com">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
     <link rel="stylesheet" href="style.css">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
@@ -145,7 +147,7 @@
             <label>Board
                 <select id="leaderboard-scope">
                     <option value="global">Global</option>
-                    <option value="country">My country</option>
+                    <option value="my-country">My country</option>
                 </select>
             </label>
             <label>Show
@@ -283,7 +285,7 @@
             <div class="board-column">
                 <div id="black-player-card" class="player-card">
                     <div class="player-avatar" id="black-avatar">B</div>
-                    <div class="player-card-copy"><strong id="black-player-name">Black</strong><span id="black-player-rating">1200</span></div>
+                    <div class="player-card-copy"><strong id="black-player-name">Black</strong><span id="black-player-rating">1200</span><div id="black-captured-pieces" class="captured-pieces" aria-label="Pieces captured by Black"></div></div>
                     <div class="clock" id="black-clock">10:00</div>
                 </div>
 
@@ -291,7 +293,7 @@
 
                 <div id="white-player-card" class="player-card">
                     <div class="player-avatar light-avatar" id="white-avatar">W</div>
-                    <div class="player-card-copy"><strong id="white-player-name">White</strong><span id="white-player-rating">1200</span></div>
+                    <div class="player-card-copy"><strong id="white-player-name">White</strong><span id="white-player-rating">1200</span><div id="white-captured-pieces" class="captured-pieces" aria-label="Pieces captured by White"></div></div>
                     <div class="clock" id="white-clock">10:00</div>
                 </div>
 
@@ -308,6 +310,13 @@
                 <div class="side-panel-title"><span>Match chat</span><span class="online-dot"></span></div>
                 <div id="chat-messages" class="chat-messages"></div>
                 <div class="chat-input-area">
+                    <div class="emoji-picker-wrap">
+                        <button id="emoji-button" class="emoji-button" type="button" aria-label="Open reactions" aria-expanded="false">☺</button>
+                        <div id="emoji-picker" class="emoji-picker hidden">
+                            <input id="emoji-search" type="text" placeholder="Search reactions…" autocomplete="off">
+                            <div id="emoji-list" class="emoji-list"></div>
+                        </div>
+                    </div>
                     <input id="chat-input" type="text" placeholder="Send a message…" maxlength="150">
                     <button id="chat-send" type="button" aria-label="Send message">↑</button>
                 </div>

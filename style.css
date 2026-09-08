@@ -35,6 +35,7 @@ body {
         radial-gradient(900px circle at var(--mouse-x) var(--mouse-y), rgba(139, 124, 255, 0.10), transparent 46%),
         radial-gradient(700px circle at 88% 12%, rgba(78, 215, 255, 0.08), transparent 45%),
         linear-gradient(180deg, #08090e 0%, #08090d 46%, #06070a 100%);
+    background-attachment: fixed;
     color: var(--text);
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -936,10 +937,10 @@ select { min-width: 145px; padding: 10px 34px 10px 11px; }
     width: min(1180px, 100%);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 210px 520px 210px;
+    grid-template-columns: 232px 520px 232px;
     justify-content: center;
     align-items: start;
-    gap: 18px;
+    gap: 16px;
 }
 
 .side-panel {
@@ -1151,7 +1152,7 @@ body[data-board-theme="emerald"] .dark-square { background: #355d4b; }
     .hero-knight { font-size: 145px; }
     .ring-one { width: 270px; height: 270px; }
     .ring-two { width: 350px; height: 350px; }
-    .game-layout { grid-template-columns: 180px 520px; }
+    .game-layout { grid-template-columns: 210px 520px; }
     .chat-panel { grid-column: 1 / -1; width: 520px; height: 230px; justify-self: end; }
 }
 
@@ -1301,4 +1302,224 @@ img.emoji.country-emoji {
     vertical-align: -0.14em;
     display: inline-block;
     object-fit: contain;
+}
+
+
+/* Captured pieces */
+.player-card {
+    position: relative;
+}
+
+.player-card-copy {
+    overflow: visible;
+}
+
+.captured-pieces {
+    min-height: 17px;
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow: hidden;
+}
+
+.captured-pieces img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    margin-right: -4px;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .28));
+}
+
+/* Emoji reactions */
+.emoji-picker-wrap {
+    position: relative;
+    flex: 0 0 auto;
+    margin-left: -2px;
+}
+
+.chat-input-area .emoji-button {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border);
+    background: #0c0e14;
+    color: #d7d9e2;
+    font-size: 18px;
+    line-height: 1;
+    overflow: visible;
+    transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.chat-input-area .emoji-button-face {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    line-height: 1;
+    transform: translateX(1px);
+    transform-origin: center;
+    pointer-events: none;
+    transition: transform 160ms cubic-bezier(.2, .9, .25, 1.35);
+}
+
+.chat-input-area .emoji-button-face img.emoji,
+.chat-input-area .emoji-button img.emoji {
+    width: 20px !important;
+    height: 20px !important;
+    margin: 0 !important;
+    display: block !important;
+    pointer-events: none;
+}
+
+.chat-input-area .emoji-button:hover {
+    background: rgba(139, 124, 255, .12);
+    border-color: rgba(139, 124, 255, .40);
+    color: white;
+    box-shadow: 0 0 0 3px rgba(139, 124, 255, .06);
+}
+
+.chat-input-area .emoji-button:hover .emoji-button-face {
+    animation: emojiButtonBounce 520ms cubic-bezier(.2, .85, .25, 1.25) infinite alternate;
+}
+
+.chat-input-area .emoji-button:active .emoji-button-face {
+    transform: translateX(1px) scale(.90);
+    animation: none;
+}
+
+@keyframes emojiButtonBounce {
+    from { transform: translateX(1px) translateY(-1px) scale(1.06) rotate(-3deg); }
+    to { transform: translateX(1px) translateY(-2px) scale(1.14) rotate(3deg); }
+}
+
+.emoji-picker {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 9px);
+    z-index: 4200;
+    width: 210px;
+    padding: 9px;
+    border: 1px solid var(--border-strong);
+    border-radius: 13px;
+    background: rgba(11, 13, 20, .98);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, .48);
+    backdrop-filter: blur(18px);
+}
+
+.emoji-picker input {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 8px 9px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #080a0f;
+    color: white;
+    font-size: 11px;
+}
+
+.emoji-list {
+    max-height: 190px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    padding-right: 2px;
+}
+
+.chat-input-area .emoji-option {
+    width: 42px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .035);
+    color: white;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.chat-input-area .emoji-option:hover {
+    transform: translateY(-1px) scale(1.05);
+    border-color: rgba(139, 124, 255, .35);
+    background: rgba(139, 124, 255, .12);
+}
+
+.player-reaction {
+    position: absolute;
+    left: 8px;
+    top: -12px;
+    z-index: 100;
+    width: 48px;
+    height: 48px;
+    pointer-events: none;
+    display: grid;
+    place-items: center;
+    animation: reactionPop 1.7s cubic-bezier(.16, .9, .3, 1) forwards;
+}
+
+.reaction-emoji {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 5px;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 999px;
+    background: rgba(10, 12, 18, .92);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, .42), 0 0 20px rgba(139, 124, 255, .22);
+    font-size: 23px;
+    font-weight: 900;
+}
+
+.reaction-sparkle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: #d9d3ff;
+    font-size: 12px;
+    transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateY(-8px);
+    animation: reactionSparkle 1.25s ease-out forwards;
+}
+
+@keyframes reactionPop {
+    0% { opacity: 0; transform: translateY(12px) scale(.55) rotate(-7deg); }
+    18% { opacity: 1; transform: translateY(-8px) scale(1.14) rotate(3deg); }
+    72% { opacity: 1; transform: translateY(-20px) scale(1); }
+    100% { opacity: 0; transform: translateY(-38px) scale(.82); }
+}
+
+@keyframes reactionSparkle {
+    0% { opacity: 0; transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateY(-8px) scale(.4); }
+    22% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateY(-30px) scale(1.25); }
+}
+
+body.reduce-motion .player-reaction,
+body.reduce-motion .reaction-sparkle {
+    animation-duration: .9s !important;
+}
+
+
+/* Final polish: hide the browser page scrollbar while keeping internal panels scrollable. */
+html,
+body {
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.move-list,
+.chat-messages,
+.emoji-list {
+    scrollbar-width: thin;
+    scrollbar-color: #292d39 transparent;
 }

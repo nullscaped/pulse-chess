@@ -1,10 +1,14 @@
 # Pulse Chess ♞
 
-Pulse Chess is a real-time multiplayer chess platform built for the web.
+A real-time multiplayer chess platform built for the web.
 
-It combines online matchmaking, player accounts, Elo ratings, leaderboards, private matches, bots, live chat, sound effects, music, and a modern responsive interface.
+Pulse Chess combines online matchmaking, player accounts, Elo ratings, leaderboards, private matches, bots, live chat, reactions, sound effects, music, and a modern responsive interface.
 
 > **Status:** Pulse Chess is currently in active development.
+
+## Live Demo
+
+[**Play Pulse Chess →**](https://pulse-chess.onrender.com)
 
 ---
 

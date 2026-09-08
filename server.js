@@ -20,7 +20,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server);
 
-const PORT = Number(process.env.PORT || 3000);
+const PORT = process.env.PORT || 3000;
 const STARTING_TIME = 10 * 60 * 1000;
 const ELO_K = 32;
 
@@ -36,11 +36,9 @@ let waitingPlayer = null;
 const games = new Map();
 const privateWaiting = new Map();
 
-app.use(express.json({ limit: "100kb" }));
+app.set("trust proxy", 1);
 
-if (process.env.NODE_ENV === "production") {
-    app.set("trust proxy", 1);
-}
+app.use(express.json());
 
 // Database
 
@@ -2325,6 +2323,38 @@ io.on("connection", function(socket) {
                 "Resignation failed:",
                 error
             );
+        });
+    });
+
+    socket.on("emoji-reaction", function(rawEmoji) {
+        const roomId = socket.data.roomId;
+
+        if (!roomId) {
+            return;
+        }
+
+        const game = games.get(roomId);
+
+        if (!game || game.gameOver) {
+            return;
+        }
+
+        const allowedEmojis = new Set([
+            "😂", "😭", "🔥", "💀", "😎",
+            "🤝", "👏", "❤️", "😡", "🤔",
+            "👀", "🎯", "⚡", "👑", "🫡",
+            "😈", "🥶", "😱", "🤯", "GG"
+        ]);
+
+        const emoji = String(rawEmoji || "").trim();
+
+        if (!allowedEmojis.has(emoji)) {
+            return;
+        }
+
+        socket.to(roomId).emit("emoji-reaction", {
+            emoji,
+            color: socket.data.color
         });
     });
 

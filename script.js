@@ -9,6 +9,30 @@ import { io } from "/socket.io/socket.io.esm.min.js";
 const GOOGLE_CLIENT_ID =
     "544555583922-6ga00tnd4m312vt3qfb8ts5htuhvklum.apps.googleusercontent.com";
 
+const COUNTRY_CODES = [
+    "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT",
+    "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI",
+    "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY",
+    "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN",
+    "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM",
+    "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK",
+    "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL",
+    "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM",
+    "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR",
+    "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN",
+    "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS",
+    "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK",
+    "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW",
+    "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP",
+    "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM",
+    "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW",
+    "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM",
+    "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF",
+    "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW",
+    "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI",
+    "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW"
+];
+
 // DOM
 
 const navbar =
@@ -395,6 +419,36 @@ const chatSend =
         "chat-send"
     );
 
+const emojiButton =
+    document.getElementById(
+        "emoji-button"
+    );
+
+const emojiPicker =
+    document.getElementById(
+        "emoji-picker"
+    );
+
+const emojiSearch =
+    document.getElementById(
+        "emoji-search"
+    );
+
+const emojiList =
+    document.getElementById(
+        "emoji-list"
+    );
+
+const whiteCapturedPieces =
+    document.getElementById(
+        "white-captured-pieces"
+    );
+
+const blackCapturedPieces =
+    document.getElementById(
+        "black-captured-pieces"
+    );
+
 const friendModal =
     document.getElementById(
         "friend-modal"
@@ -518,6 +572,8 @@ const squareElements = [];
 let selectedSquare = null;
 let legalMoves = [];
 let moveHistory = [];
+let capturedByWhite = [];
+let capturedByBlack = [];
 
 let lastMoveFrom = null;
 let lastMoveTo = null;
@@ -858,6 +914,46 @@ const lofiProgressions = [
         [110.00, 138.59, 174.61, 220.00],
         [123.47, 155.56, 196.00, 246.94],
         [98.00, 123.47, 146.83, 196.00]
+    ],
+    [
+        [164.81, 196.00, 246.94, 293.66],
+        [146.83, 185.00, 220.00, 277.18],
+        [130.81, 164.81, 207.65, 246.94],
+        [123.47, 155.56, 196.00, 233.08],
+        [110.00, 138.59, 174.61, 220.00],
+        [123.47, 164.81, 196.00, 246.94],
+        [146.83, 174.61, 220.00, 261.63],
+        [130.81, 155.56, 196.00, 246.94]
+    ],
+    [
+        [98.00, 130.81, 164.81, 196.00],
+        [92.50, 123.47, 146.83, 185.00],
+        [110.00, 146.83, 174.61, 220.00],
+        [82.41, 110.00, 130.81, 164.81],
+        [98.00, 123.47, 155.56, 196.00],
+        [87.31, 116.54, 146.83, 174.61],
+        [92.50, 123.47, 155.56, 185.00],
+        [110.00, 138.59, 174.61, 207.65]
+    ],
+    [
+        [174.61, 220.00, 261.63, 329.63],
+        [155.56, 196.00, 233.08, 293.66],
+        [146.83, 185.00, 220.00, 277.18],
+        [130.81, 164.81, 207.65, 246.94],
+        [146.83, 196.00, 233.08, 293.66],
+        [123.47, 155.56, 196.00, 246.94],
+        [110.00, 146.83, 174.61, 220.00],
+        [130.81, 174.61, 207.65, 261.63]
+    ],
+    [
+        [116.54, 146.83, 174.61, 220.00],
+        [130.81, 164.81, 196.00, 246.94],
+        [103.83, 130.81, 155.56, 196.00],
+        [92.50, 123.47, 146.83, 185.00],
+        [110.00, 138.59, 164.81, 220.00],
+        [123.47, 155.56, 185.00, 233.08],
+        [98.00, 130.81, 155.56, 196.00],
+        [103.83, 138.59, 164.81, 207.65]
     ]
 ];
 
@@ -865,7 +961,11 @@ const lofiMelodies = [
     [392.00, 440.00, 523.25, 493.88, 440.00, 392.00, 329.63, 349.23],
     [440.00, 523.25, 587.33, 523.25, 466.16, 392.00, 440.00, 349.23],
     [329.63, 392.00, 440.00, 523.25, 493.88, 440.00, 392.00, 349.23],
-    [523.25, 493.88, 440.00, 392.00, 349.23, 392.00, 440.00, 493.88]
+    [523.25, 493.88, 440.00, 392.00, 349.23, 392.00, 440.00, 493.88],
+    [659.25, 587.33, 523.25, 440.00, 493.88, 392.00, 440.00, 523.25],
+    [293.66, 349.23, 392.00, 440.00, 392.00, 329.63, 293.66, 261.63],
+    [587.33, 659.25, 698.46, 659.25, 587.33, 523.25, 466.16, 523.25],
+    [349.23, 415.30, 466.16, 523.25, 466.16, 415.30, 349.23, 311.13]
 ];
 
 function ensureAudio() {
@@ -1301,9 +1401,20 @@ function playLofiChord() {
         musicStep > 0 &&
         musicStep % 16 === 0
     ) {
-        musicVariation =
-            (musicVariation + 1) %
-            lofiProgressions.length;
+        let nextVariation = musicVariation;
+
+        while (
+            nextVariation === musicVariation &&
+            lofiProgressions.length > 1
+        ) {
+            nextVariation =
+                Math.floor(
+                    Math.random() *
+                    lofiProgressions.length
+                );
+        }
+
+        musicVariation = nextVariation;
     }
 
     const progression =
@@ -1315,12 +1426,17 @@ function playLofiChord() {
     const chord =
         progression[chordIndex];
 
+    const octaveShift =
+        musicStep % 12 === 7
+            ? 2
+            : 1;
+
     chord.forEach(function(
         frequency,
         index
     ) {
         createTone(
-            frequency,
+            frequency * octaveShift,
             2.05,
             {
                 type:
@@ -1429,6 +1545,24 @@ function playLofiChord() {
                 }
             );
         }
+    }
+
+    // Occasional bell-like counter melody.
+    if (musicStep % 7 === 3) {
+        const melody =
+            lofiMelodies[musicVariation];
+
+        createTone(
+            melody[(musicStep + 3) % melody.length] * 2,
+            0.7,
+            {
+                type: "sine",
+                level: 0.0045,
+                cutoff: 2200,
+                output: musicGain,
+                delay: 1.08
+            }
+        );
     }
 
     // Tiny vinyl texture at changing positions.
@@ -1840,24 +1974,102 @@ async function loadHomeLeaderboard() {
     }
 }
 
+function initializeCountryLeaderboardOptions() {
+    if (!leaderboardScope) {
+        return;
+    }
+
+    const existingCountryOptions =
+        leaderboardScope.querySelector(
+            'optgroup[data-country-options="true"]'
+        );
+
+    if (existingCountryOptions) {
+        return;
+    }
+
+    const regionNames =
+        typeof Intl.DisplayNames === "function"
+            ? new Intl.DisplayNames(
+                [navigator.language || "en"],
+                { type: "region" }
+            )
+            : null;
+
+    const countries =
+        COUNTRY_CODES
+            .map(function(code) {
+                return {
+                    code,
+                    name:
+                        regionNames?.of(code) || code
+                };
+            })
+            .sort(function(a, b) {
+                return a.name.localeCompare(b.name);
+            });
+
+    const group =
+        document.createElement("optgroup");
+
+    group.label = "Countries";
+    group.dataset.countryOptions = "true";
+
+    countries.forEach(function(country) {
+        const option =
+            document.createElement("option");
+
+        option.value =
+            `country:${country.code}`;
+
+        option.textContent =
+            country.name;
+
+        group.appendChild(option);
+    });
+
+    leaderboardScope.appendChild(group);
+}
+
+
 async function loadLeaderboard() {
     leaderboardList.innerHTML =
         '<div class="leaderboard-loading">Loading rankings…</div>';
 
-    const scope =
+    const selectedScope =
         leaderboardScope.value;
 
     const limit =
         leaderboardLimit.value;
 
+    const isGlobal =
+        selectedScope === "global";
+
+    const isMyCountry =
+        selectedScope === "my-country";
+
+    const selectedCountry =
+        selectedScope.startsWith("country:")
+            ? selectedScope.slice(8)
+            : null;
+
+    const scope =
+        isGlobal ? "global" : "country";
+
+    const params =
+        new URLSearchParams({
+            scope,
+            limit
+        });
+
+    if (selectedCountry) {
+        params.set("country", selectedCountry);
+    }
+
     try {
         const response =
             await fetch(
-                `/api/leaderboard?scope=${encodeURIComponent(
-                    scope
-                )}&limit=${encodeURIComponent(
-                    limit
-                )}`
+                `/api/leaderboard?${params.toString()}`
             );
 
         const data =
@@ -1878,16 +2090,28 @@ async function loadLeaderboard() {
             scope === "country" &&
             data.country
         ) {
+            const regionNames =
+                typeof Intl.DisplayNames === "function"
+                    ? new Intl.DisplayNames(
+                        [navigator.language || "en"],
+                        { type: "region" }
+                    )
+                    : null;
+
+            const countryName =
+                regionNames?.of(data.country) ||
+                data.country;
+
             leaderboardScopeNote.textContent =
                 `${countryCodeToFlag(
                     data.country
-                )} ${data.country} rankings`;
+                )} ${countryName} rankings`;
         } else if (
-            scope === "country" &&
+            isMyCountry &&
             !data.country
         ) {
             leaderboardScopeNote.textContent =
-                "Sign in to use your country";
+                "Your country is not available yet";
         } else {
             leaderboardScopeNote.textContent =
                 "Worldwide rankings";
@@ -2562,11 +2786,11 @@ socket.on(
         };
 
         const capturedPiece =
-            board[
-                receivedMove.y
-            ][
-                receivedMove.x
-            ];
+            getCapturedPieceForMove(
+                data.fromY,
+                data.fromX,
+                receivedMove
+            );
 
         const notation =
             getMoveNotation(
@@ -2582,6 +2806,11 @@ socket.on(
             data.fromX,
             receivedMove,
             false
+        );
+
+        recordCapturedPiece(
+            movingPiece.color,
+            capturedPiece
         );
 
         addMoveToHistory(
@@ -2645,6 +2874,29 @@ socket.on(
                 "Opponent",
             data?.message || ""
         );
+    }
+);
+
+socket.on(
+    "emoji-reaction",
+    function(data) {
+        const color =
+            data?.color;
+
+        const emoji =
+            data?.emoji;
+
+        if (
+            (color === "white" || color === "black") &&
+            typeof emoji === "string"
+        ) {
+            showEmojiReaction(
+                color,
+                emoji
+            );
+
+            playSfx("select");
+        }
     }
 );
 
@@ -3106,7 +3358,10 @@ function resetGame() {
     legalMoves = [];
 
     moveHistory = [];
+    capturedByWhite = [];
+    capturedByBlack = [];
     renderMoveHistory();
+    renderCapturedPieces();
 
     clearLastMove();
 
@@ -3147,6 +3402,259 @@ function resetGame() {
 
 
 // UI Functions
+
+const emojiReactions = [
+    { emoji: "😂", name: "laugh" },
+    { emoji: "😭", name: "cry" },
+    { emoji: "🔥", name: "fire" },
+    { emoji: "💀", name: "skull" },
+    { emoji: "😎", name: "cool" },
+    { emoji: "🤝", name: "handshake" },
+    { emoji: "👏", name: "clap" },
+    { emoji: "❤️", name: "heart" },
+    { emoji: "😡", name: "angry" },
+    { emoji: "🤔", name: "thinking" },
+    { emoji: "👀", name: "eyes" },
+    { emoji: "🎯", name: "target" },
+    { emoji: "⚡", name: "lightning" },
+    { emoji: "👑", name: "crown" },
+    { emoji: "🫡", name: "salute" },
+    { emoji: "😈", name: "devil" },
+    { emoji: "🥶", name: "cold" },
+    { emoji: "😱", name: "shocked" },
+    { emoji: "🤯", name: "mind blown" },
+    { emoji: "GG", name: "good game gg" }
+];
+
+function getCapturedPieceForMove(
+    fromY,
+    fromX,
+    move
+) {
+    const direct =
+        board[move.y][move.x];
+
+    if (direct !== null) {
+        return { ...direct };
+    }
+
+    if (move.enPassant) {
+        const movingPiece =
+            board[fromY][fromX];
+
+        const capturedY =
+            movingPiece?.color === "white"
+                ? move.y + 1
+                : move.y - 1;
+
+        const enPassantPiece =
+            board[capturedY]?.[move.x] || null;
+
+        return enPassantPiece
+            ? { ...enPassantPiece }
+            : null;
+    }
+
+    return null;
+}
+
+function recordCapturedPiece(
+    capturingColor,
+    piece
+) {
+    if (!piece) {
+        return;
+    }
+
+    if (capturingColor === "white") {
+        capturedByWhite.push(piece);
+    } else {
+        capturedByBlack.push(piece);
+    }
+
+    renderCapturedPieces();
+}
+
+function renderCapturedPieces() {
+    const render = function(root, pieces) {
+        if (!root) {
+            return;
+        }
+
+        root.innerHTML = "";
+
+        const order = {
+            queen: 5,
+            rook: 4,
+            bishop: 3,
+            knight: 2,
+            pawn: 1
+        };
+
+        [...pieces]
+            .sort(function(a, b) {
+                return (order[b.type] || 0) -
+                    (order[a.type] || 0);
+            })
+            .forEach(function(piece) {
+                const img =
+                    document.createElement("img");
+
+                const colorLetter =
+                    piece.color === "white"
+                        ? "w"
+                        : "b";
+
+                img.src =
+                    `assets/pieces/${piece.type}-${colorLetter}.svg`;
+
+                img.alt = piece.type;
+                img.title = `Captured ${piece.type}`;
+
+                root.appendChild(img);
+            });
+    };
+
+    render(
+        whiteCapturedPieces,
+        capturedByWhite
+    );
+
+    render(
+        blackCapturedPieces,
+        capturedByBlack
+    );
+}
+
+function renderEmojiPicker(query = "") {
+    if (!emojiList) {
+        return;
+    }
+
+    const normalized =
+        query.trim().toLowerCase();
+
+    emojiList.innerHTML = "";
+
+    emojiReactions
+        .filter(function(item) {
+            return (
+                normalized.length === 0 ||
+                item.name.includes(normalized) ||
+                item.emoji.toLowerCase().includes(normalized)
+            );
+        })
+        .forEach(function(item) {
+            const button =
+                document.createElement("button");
+
+            button.type = "button";
+            button.className = "emoji-option";
+            button.textContent = item.emoji;
+            button.title = item.name;
+
+            button.addEventListener(
+                "click",
+                function() {
+                    sendEmojiReaction(
+                        item.emoji
+                    );
+                }
+            );
+
+            emojiList.appendChild(button);
+        });
+}
+
+function closeEmojiPicker() {
+    if (!emojiPicker) {
+        return;
+    }
+
+    emojiPicker.classList.add("hidden");
+    emojiButton?.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+}
+
+function showEmojiReaction(
+    color,
+    emoji
+) {
+    const card =
+        color === "white"
+            ? whitePlayerCard
+            : blackPlayerCard;
+
+    if (!card) {
+        return;
+    }
+
+    const reaction =
+        document.createElement("div");
+
+    reaction.className =
+        "player-reaction";
+
+    const main =
+        document.createElement("span");
+
+    main.className = "reaction-emoji";
+    main.textContent = emoji;
+    reaction.appendChild(main);
+
+    for (let index = 0; index < 6; index++) {
+        const sparkle =
+            document.createElement("span");
+
+        sparkle.className =
+            "reaction-sparkle";
+
+        sparkle.textContent =
+            index % 2 === 0
+                ? "✦"
+                : "·";
+
+        sparkle.style.setProperty(
+            "--spark-angle",
+            `${index * 60}deg`
+        );
+
+        reaction.appendChild(sparkle);
+    }
+
+    card.appendChild(reaction);
+
+    setTimeout(
+        function() {
+            reaction.remove();
+        },
+        settings.motion ? 1700 : 900
+    );
+}
+
+function sendEmojiReaction(emoji) {
+    if (
+        !inMatch ||
+        gameOver
+    ) {
+        return;
+    }
+
+    socket.emit(
+        "emoji-reaction",
+        emoji
+    );
+
+    showEmojiReaction(
+        playerColor,
+        emoji
+    );
+
+    playSfx("select");
+    closeEmojiPicker();
+}
 
 function addChatMessage(
     sender,
@@ -3649,7 +4157,11 @@ async function endPieceDrag(event) {
     };
 
     const capturedPiece =
-        board[legalMove.y][legalMove.x];
+        getCapturedPieceForMove(
+            fromY,
+            fromX,
+            legalMove
+        );
 
     const notation =
         getMoveNotation(
@@ -3667,6 +4179,11 @@ async function endPieceDrag(event) {
             legalMove,
             false
         );
+
+    recordCapturedPiece(
+        movingPiece.color,
+        capturedPiece
+    );
 
     addMoveToHistory(notation);
 
@@ -5238,7 +5755,11 @@ async function squareClick(event) {
         };
 
         const capturedPiece =
-            board[legalMove.y][legalMove.x];
+            getCapturedPieceForMove(
+                oldGridY,
+                oldGridX,
+                legalMove
+            );
 
         const notation =
             getMoveNotation(
@@ -5256,6 +5777,11 @@ async function squareClick(event) {
                 legalMove,
                 false
             );
+
+        recordCapturedPiece(
+            movingPiece.color,
+            capturedPiece
+        );
 
         addMoveToHistory(notation);
         
@@ -5418,6 +5944,7 @@ function populateBoard(
 // Start
 
 loadSettings();
+initializeCountryLeaderboardOptions();
 
 populateBoard(8, 8);
 updateCheckHighlight();
@@ -5454,24 +5981,49 @@ document.addEventListener(
     { once: false }
 );
 
+let lastMouseClientX =
+    window.innerWidth / 2;
+
+let lastMouseClientY =
+    window.innerHeight / 4;
+
+function updateMouseGlow() {
+    if (!settings.motion) {
+        return;
+    }
+
+    document.documentElement.style.setProperty(
+        "--mouse-x",
+        `${lastMouseClientX}px`
+    );
+
+    document.documentElement.style.setProperty(
+        "--mouse-y",
+        `${lastMouseClientY}px`
+    );
+}
+
 document.addEventListener(
     "pointermove",
     function(event) {
-        if (!settings.motion) {
-            return;
-        }
-
-        document.documentElement.style.setProperty(
-            "--mouse-x",
-            `${event.clientX}px`
-        );
-
-        document.documentElement.style.setProperty(
-            "--mouse-y",
-            `${event.clientY}px`
-        );
+        lastMouseClientX = event.clientX;
+        lastMouseClientY = event.clientY;
+        updateMouseGlow();
     }
 );
+
+window.addEventListener(
+    "scroll",
+    updateMouseGlow,
+    { passive: true }
+);
+
+window.addEventListener(
+    "resize",
+    updateMouseGlow
+);
+
+updateMouseGlow();
 
 
 // Navigation
@@ -5609,6 +6161,145 @@ chatInput.addEventListener(
         }
     }
 );
+
+let emojiHoverTimer = null;
+let emojiHoverIndex = 0;
+
+function getEmojiButtonFace() {
+    if (!emojiButton) {
+        return null;
+    }
+
+    let face =
+        emojiButton.querySelector(
+            ".emoji-button-face"
+        );
+
+    if (!face) {
+        face = document.createElement("span");
+        face.className = "emoji-button-face";
+        face.textContent = "☺";
+        emojiButton.replaceChildren(face);
+    }
+
+    return face;
+}
+
+function resetEmojiButtonFace() {
+    const face = getEmojiButtonFace();
+
+    if (!face) {
+        return;
+    }
+
+    face.textContent = "☺";
+}
+
+function startEmojiButtonHover() {
+    const face = getEmojiButtonFace();
+
+    if (!face) {
+        return;
+    }
+
+    clearInterval(emojiHoverTimer);
+
+    emojiHoverIndex =
+        Math.floor(
+            Math.random() * emojiReactions.length
+        );
+
+    const cycleEmoji = function() {
+        const item =
+            emojiReactions[
+                emojiHoverIndex % emojiReactions.length
+            ];
+
+        face.textContent =
+            item.emoji === "GG"
+                ? "😎"
+                : item.emoji;
+
+        emojiHoverIndex += 1;
+    };
+
+    cycleEmoji();
+
+    emojiHoverTimer =
+        setInterval(cycleEmoji, 190);
+}
+
+function stopEmojiButtonHover() {
+    clearInterval(emojiHoverTimer);
+    emojiHoverTimer = null;
+    resetEmojiButtonFace();
+}
+
+
+if (emojiButton) {
+    getEmojiButtonFace();
+
+    emojiButton.addEventListener(
+        "mouseenter",
+        startEmojiButtonHover
+    );
+
+    emojiButton.addEventListener(
+        "mouseleave",
+        stopEmojiButtonHover
+    );
+
+    emojiButton.addEventListener(
+        "click",
+        function(event) {
+            event.stopPropagation();
+
+            const opening =
+                emojiPicker.classList.contains(
+                    "hidden"
+                );
+
+            emojiPicker.classList.toggle(
+                "hidden",
+                !opening
+            );
+
+            emojiButton.setAttribute(
+                "aria-expanded",
+                String(opening)
+            );
+
+            if (opening) {
+                emojiSearch.value = "";
+                renderEmojiPicker();
+                emojiSearch.focus();
+            }
+        }
+    );
+}
+
+emojiSearch?.addEventListener(
+    "input",
+    function() {
+        renderEmojiPicker(
+            emojiSearch.value
+        );
+    }
+);
+
+emojiPicker?.addEventListener(
+    "click",
+    function(event) {
+        event.stopPropagation();
+    }
+);
+
+document.addEventListener(
+    "click",
+    closeEmojiPicker
+);
+
+renderEmojiPicker();
 
 
 // Private Games

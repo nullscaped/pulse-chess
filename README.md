@@ -1,310 +1,75 @@
-# Pulse Chess ♞
+# Pulse Chess
 
-A real-time multiplayer chess platform built for the web.
+Pulse Chess is a real-time browser chess platform built with vanilla JavaScript, Node.js, Express, Socket.IO, PostgreSQL, chess.js, and Stockfish 18.
 
-Pulse Chess combines online matchmaking, player accounts, Elo ratings, leaderboards, private matches, bots, live chat, reactions, sound effects, music, and a modern responsive interface.
-
-> **Status:** Pulse Chess is currently in active development.
-
-## Live Demo
-
-[**Play Pulse Chess →**](https://pulse-chess.onrender.com)
-
----
-
-## Preview
-
-### Home
-
-<p align="center">
-  <img src="assets/demo/home.gif" alt="Pulse Chess home page" width="850">
-</p>
-
-### Matchmaking
-
-<p align="center">
-  <img src="assets/demo/matchmaking.gif" alt="Pulse Chess matchmaking animation" width="850">
-</p>
-
-### Match Results
-
-<p align="center">
-  <img src="assets/demo/win-result.gif" alt="Pulse Chess win result screen" width="850">
-</p>
-
----
-
-## Features
+## Final release features
 
 ### Chess
 
-- Real-time multiplayer chess
-- Legal move validation
-- Check and checkmate detection
-- Stalemate detection
-- Castling
-- En passant
-- Pawn promotion
-- Server-controlled chess clocks
-- Move history
-- Board orientation based on player color
+- Server-authoritative legal moves, clocks, FEN synchronization, and game results
+- Rated quick matchmaking and private rooms with six-character codes
+- Six time controls: 1+0, 3+0, 3+2, 5+0, 10+0, and 15+10
+- Play Bot practice ladder from Beginner 500 to Elite 3000
+- Same-bot rematches with the original difficulty and clock settings
+- Draw offers, resignation, reconnect handling, and live game chat
+- Thirty-second reconnect window; a second disconnect forfeits the game
+- PGN export, FEN copying, stored match history, and final-board viewing
+- Stockfish post-game review with Best, Excellent, Good, Inaccuracy, Mistake, and Blunder classifications
+- Private spectating for accepted friends
 
-### Multiplayer
+Bot ratings are practice targets, not certified FIDE ratings. Bot games do not affect ranked ratings.
 
-- Quick matchmaking
-- Private games with room codes
-- Live match chat
-- Player information during matches
-- Match result screens
-- Rematch / play again flow
+### Accounts and community
 
-### Accounts
+- Email/password accounts with Argon2 password hashing
+- Six-digit email verification through Brevo
+- Google sign-in and secure server-side sessions
+- Player search, profiles, avatars, bios, flags, ratings, and presence
+- Friend requests, persistent direct messages, notifications, blocking, and reporting
+- Username cooldowns and profanity/evasion filtering
+- Leaderboard page with ranking filters and the completed leaderboard animation section
+- Recent matches and detailed stored game views
 
-- Email and password authentication
-- Google Sign-In
-- Persistent login sessions
-- Username validation
-- Username profanity filtering
-- Country detection
-- Country flags
-- Player statistics
+### Interface and media
 
-### Competitive System
+- Dark responsive interface with no CSS gradients
+- SVG chess pieces and seven board themes
+- Responsive desktop and mobile layouts
+- Win, loss, draw, matchmaking, verification, and review states
+- Four supplied GIF animation assets in `assets/`, including the leaderboard and victory animations
+- Terms, Privacy, Cookies, and Fair Play pages
 
-- Elo rating system
-- Wins, losses, and draws
-- Global leaderboards
-- Country leaderboards
-- Match history
-- Rating changes after matches
+## Run locally
 
-### UI / Experience
-
-- Responsive dark interface
-- Animated gradient background
-- Matchmaking animations
-- Win / loss / draw result popup
-- Rating gain and loss animations
-- Multiple chess board themes
-- Sound effects
-- Lo-fi match music
-- Audio and visual settings
-- Responsive navigation
-
----
-
-## Tech Stack
-
-### Frontend
-
-- HTML
-- CSS
-- JavaScript
-
-### Backend
-
-- Node.js
-- Express
-- Socket.IO
-
-### Database
-
-- PostgreSQL
-- Neon
-
-### Authentication
-
-- Express Sessions
-- Argon2
-- Google Identity Services
-
-### Chess
-
-- chess.js
-
----
-
-## How It Works
-
-Pulse Chess uses Socket.IO to keep both players synchronized in real time.
-
-The Node.js server manages:
-
-- Matchmaking
-- Chess games
-- Player sessions
-- Chess clocks
-- Game results
-- Ratings
-- Leaderboards
-- Match history
-- Chat
-
-PostgreSQL is used to store player accounts, ratings, statistics, and completed matches.
-
----
-
-## Project Structure
+Create a `.env` file and never commit it:
 
 ```text
-pulse-chess/
-│
-├── assets/
-│   ├── demo/
-│   │   ├── home.gif
-│   │   ├── matchmaking.gif
-│   │   └── win-result.gif
-│   │
-│   └── pieces/
-│       ├── bishop-b.svg
-│       ├── bishop-w.svg
-│       ├── king-b.svg
-│       ├── king-w.svg
-│       ├── knight-b.svg
-│       ├── knight-w.svg
-│       ├── pawn-b.svg
-│       ├── pawn-w.svg
-│       ├── queen-b.svg
-│       ├── queen-w.svg
-│       ├── rook-b.svg
-│       └── rook-w.svg
-│
-├── index.html
-├── style.css
-├── script.js
-├── server.js
-├── pieces.js
-├── package.json
-├── package-lock.json
-├── .gitignore
-└── README.md
-```
-
----
-
-## Running Pulse Chess Locally
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/nullscaped/pulse-chess.git
-cd pulse-chess
-```
-
-### 2. Install dependencies
-
-```bash
-npm install
-```
-
-### 3. Create a `.env` file
-
-Create a file named:
-
-```text
-.env
-```
-
-Add:
-
-```env
-DATABASE_URL=your_postgresql_database_url
-SESSION_SECRET=your_session_secret
+DATABASE_URL=your_postgresql_connection_string
+SESSION_SECRET=at_least_32_random_characters
 GOOGLE_CLIENT_ID=your_google_client_id
+BREVO_API_KEY=your_brevo_api_key
+NODE_ENV=development
 ```
 
-Do **not** upload your `.env` file to GitHub.
+Install and start:
 
-### 4. Start the server
-
-```bash
-node server.js
+```powershell
+npm.cmd install
+npm.cmd start
 ```
 
-### 5. Open Pulse Chess
+Open `http://localhost:3000`.
 
-Visit:
+Run checks with `npm.cmd run check`.
 
-```text
-http://localhost:3000
-```
+## Email verification
 
----
+The Brevo sender must be authorized as `noreply.pulsechess@gmail.com`. Signup stores a pending verification record and sends a six-digit code. The code expires after ten minutes and the account is not activated until verification succeeds.
 
-## Google Sign-In Setup
+## Deployment
 
-To use Google authentication locally, create a Web OAuth client in Google Cloud.
+Use a persistent PostgreSQL database, set production environment variables in the host dashboard, use `npm start`, deploy the complete project root, and include the complete `assets/` directory. Never upload `.env` or expose API keys.
 
-Add this as an authorized JavaScript origin:
+## Fair play
 
-```text
-http://localhost:3000
-```
-
-Then place your Google Client ID inside your `.env` file.
-
----
-
-## Database
-
-Pulse Chess uses PostgreSQL for persistent player data.
-
-Player data includes:
-
-- Username
-- Email
-- Country
-- Elo rating
-- Wins
-- Losses
-- Draws
-- Authentication information
-- Match history
-
-The server automatically creates and updates the database tables required by the application.
-
----
-
-## Rating System
-
-New players begin at:
-
-```text
-1200 Elo
-```
-
-Ratings change after rated games depending on the relative rating of each player.
-
-Winning against a stronger player gives a larger rating increase, while defeating a lower-rated player gives a smaller increase.
-
----
-
-## Development
-
-Pulse Chess is actively being developed.
-
-Planned improvements include:
-
-- Improved player profiles
-- More bot difficulties
-- Better matchmaking
-- Additional game settings
-- More animations and sound effects
-- Improved match history
-- Social features
-- Further anti-cheat and server validation
-- Production deployment
-
----
-
-## Author
-
-Built by **Fahad Khan**
-
-GitHub: [@nullscaped](https://github.com/nullscaped)
-
----
-
-## License
-
-This project is licensed under the terms included in the `LICENSE` file.
+Built-in bots and post-game review are allowed. Outside engines, automation, move assistance, exploits, or another person are not allowed during rated player-versus-player games.

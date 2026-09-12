@@ -47,11 +47,21 @@ const leaderboardPage =
 const settingsPage =
     document.getElementById("settings-page");
 
+const privacyPage =
+    document.getElementById("privacy-page");
+
 const loginPage =
     document.getElementById("login-page");
 
 const signupPage =
     document.getElementById("signup-page");
+
+const verifyEmailPage = document.getElementById("verify-email-page");
+const verifyEmailForm = document.getElementById("verify-email-form");
+const verifyEmailAddress = document.getElementById("verify-email-address");
+const verificationCode = document.getElementById("verification-code");
+const verifyEmailError = document.getElementById("verify-email-error");
+let pendingVerificationEmail = "";
 
 const matchmaking =
     document.getElementById("matchmaking");
@@ -62,8 +72,7 @@ const game =
 const playButton =
     document.getElementById("play-button");
 
-const botButton =
-    document.getElementById("bot-button");
+const botButton = document.getElementById("bot-button");
 
 const friendButton =
     document.getElementById("friend-button");
@@ -124,6 +133,36 @@ const userNav =
         "user-nav"
     );
 
+const notificationWrap =
+    document.getElementById(
+        "notification-wrap"
+    );
+
+const notificationButton =
+    document.getElementById(
+        "notification-button"
+    );
+
+const notificationBadge =
+    document.getElementById(
+        "notification-badge"
+    );
+
+const notificationPanel =
+    document.getElementById(
+        "notification-panel"
+    );
+
+const notificationList =
+    document.getElementById(
+        "notification-list"
+    );
+
+const notificationPlayersButton =
+    document.getElementById(
+        "notification-players-button"
+    );
+
 const navUsername =
     document.getElementById(
         "nav-username"
@@ -142,6 +181,11 @@ const userDashboard =
 const dashboardFlag =
     document.getElementById(
         "dashboard-flag"
+    );
+
+const dashboardAvatar =
+    document.getElementById(
+        "dashboard-avatar"
     );
 
 const dashboardName =
@@ -172,6 +216,11 @@ const dashboardDraws =
 const heroPlayerCount =
     document.getElementById(
         "hero-player-count"
+    );
+
+const homePreviewBoard =
+    document.getElementById(
+        "home-preview-board"
     );
 
 const homeLeaderboard =
@@ -249,6 +298,246 @@ const settingsUsernameMessage =
         "settings-username-message"
     );
 
+const usernameCooldown =
+    document.getElementById(
+        "username-cooldown"
+    );
+
+const settingsAvatarGrid =
+    document.getElementById(
+        "settings-avatar-grid"
+    );
+
+const settingsBio =
+    document.getElementById(
+        "settings-bio"
+    );
+
+const saveProfileButton =
+    document.getElementById(
+        "save-profile-button"
+    );
+
+const settingsProfileMessage =
+    document.getElementById(
+        "settings-profile-message"
+    );
+
+const signoutAllButton =
+    document.getElementById("signout-all-button");
+
+const deleteAccountButton =
+    document.getElementById("delete-account-button");
+
+const accountControlMessage =
+    document.getElementById("account-control-message");
+
+const privacyButton =
+    document.getElementById(
+        "privacy-button"
+    );
+
+const privacyBackButton =
+    document.getElementById(
+        "privacy-back-button"
+    );
+
+const termsPage =
+    document.getElementById("terms-page");
+
+const cookiesPage =
+    document.getElementById("cookies-page");
+
+const fairPlayPage =
+    document.getElementById("fair-play-page");
+
+const termsButton =
+    document.getElementById("terms-button");
+
+const cookiesButton =
+    document.getElementById("cookies-button");
+
+const fairPlayButton =
+    document.getElementById("fair-play-button");
+
+const legalHomeButtons =
+    document.querySelectorAll(".legal-home-button");
+
+const globalFooter =
+    document.getElementById("global-footer");
+
+const playersButton =
+    document.getElementById(
+        "players-button"
+    );
+
+const socialPage =
+    document.getElementById(
+        "social-page"
+    );
+
+const playerSearchInput =
+    document.getElementById(
+        "player-search-input"
+    );
+
+const playerSearchButton =
+    document.getElementById(
+        "player-search-button"
+    );
+
+const playerSearchResults =
+    document.getElementById(
+        "player-search-results"
+    );
+
+const friendRequestList =
+    document.getElementById(
+        "friend-request-list"
+    );
+
+const friendRequestCount =
+    document.getElementById(
+        "friend-request-count"
+    );
+
+const friendList =
+    document.getElementById(
+        "friend-list"
+    );
+
+const friendCount =
+    document.getElementById(
+        "friend-count"
+    );
+
+const socialWelcome =
+    document.getElementById(
+        "social-welcome"
+    );
+
+const playerProfilePanel =
+    document.getElementById(
+        "player-profile-panel"
+    );
+
+const profileViewAvatar =
+    document.getElementById(
+        "profile-view-avatar"
+    );
+
+const profileViewName =
+    document.getElementById(
+        "profile-view-name"
+    );
+
+const profileViewFlag =
+    document.getElementById(
+        "profile-view-flag"
+    );
+
+const profileViewBio =
+    document.getElementById(
+        "profile-view-bio"
+    );
+
+const profileViewRating =
+    document.getElementById(
+        "profile-view-rating"
+    );
+
+const profileViewJoined =
+    document.getElementById(
+        "profile-view-joined"
+    );
+
+const profileFriendButton =
+    document.getElementById(
+        "profile-friend-button"
+    );
+
+const profileMessageButton =
+    document.getElementById(
+        "profile-message-button"
+    );
+
+const profileWatchButton =
+    document.getElementById("profile-watch-button");
+
+const profileBlockButton =
+    document.getElementById("profile-block-button");
+
+const profileReportButton =
+    document.getElementById("profile-report-button");
+
+const profileViewPresence =
+    document.getElementById("profile-view-presence");
+
+const profileStatRating =
+    document.getElementById(
+        "profile-stat-rating"
+    );
+
+const profileStatWins =
+    document.getElementById(
+        "profile-stat-wins"
+    );
+
+const profileStatLosses =
+    document.getElementById(
+        "profile-stat-losses"
+    );
+
+const profileStatDraws =
+    document.getElementById(
+        "profile-stat-draws"
+    );
+
+const profileRecentGames =
+    document.getElementById(
+        "profile-recent-games"
+    );
+
+const directMessagePanel =
+    document.getElementById(
+        "direct-message-panel"
+    );
+
+const dmBackButton =
+    document.getElementById(
+        "dm-back-button"
+    );
+
+const dmAvatar =
+    document.getElementById(
+        "dm-avatar"
+    );
+
+const dmName =
+    document.getElementById(
+        "dm-name"
+    );
+
+const dmRating =
+    document.getElementById(
+        "dm-rating"
+    );
+
+const dmMessages =
+    document.getElementById(
+        "dm-messages"
+    );
+
+const dmForm =
+    document.getElementById(
+        "dm-form"
+    );
+
+const dmInput =
+    document.getElementById(
+        "dm-input"
+    );
+
 const loginForm =
     document.getElementById(
         "login-form"
@@ -313,6 +602,12 @@ const resignButton =
     document.getElementById(
         "resign-button"
     );
+
+const drawButton =
+    document.getElementById("draw-button");
+
+const openingName =
+    document.getElementById("opening-name");
 
 const gameSettingsButton =
     document.getElementById(
@@ -449,6 +744,21 @@ const blackCapturedPieces =
         "black-captured-pieces"
     );
 
+const quickMatchModal =
+    document.getElementById("quick-match-modal");
+
+const quickMatchModalClose =
+    document.getElementById("quick-match-modal-close");
+
+const timeControlButtons =
+    document.querySelectorAll("[data-time-control]");
+
+const privateTimeControl =
+    document.getElementById("private-time-control");
+
+const botTimeControl =
+    document.getElementById("bot-time-control");
+
 const friendModal =
     document.getElementById(
         "friend-modal"
@@ -493,6 +803,12 @@ const privateError =
     document.getElementById(
         "private-error"
     );
+
+const botModal = document.getElementById("bot-modal");
+
+const botModalClose = document.getElementById("bot-modal-close");
+
+const botDifficultyButtons = document.querySelectorAll("[data-bot-difficulty]");
 
 const resultModal =
     document.getElementById(
@@ -549,9 +865,57 @@ const resultHome =
         "result-home"
     );
 
+const resultReview =
+    document.getElementById("result-review");
+
+const resultCopyFen =
+    document.getElementById("result-copy-fen");
+
+const resultExportPgn =
+    document.getElementById("result-export-pgn");
+
+const drawOfferModal =
+    document.getElementById("draw-offer-modal");
+
+const drawAcceptButton =
+    document.getElementById("draw-accept-button");
+
+const drawDeclineButton =
+    document.getElementById("draw-decline-button");
+
+const reviewModal =
+    document.getElementById("review-modal");
+
+const reviewClose =
+    document.getElementById("review-close");
+
+const reviewStatus =
+    document.getElementById("review-status");
+
+const reviewSummary =
+    document.getElementById("review-summary");
+
+const reviewMoves =
+    document.getElementById("review-moves");
+
 const toastContainer =
     document.getElementById(
         "toast-container"
+    );
+
+const cookieBanner =
+    document.getElementById(
+        "cookie-banner"
+    );
+
+const cookieAccept =
+    document.getElementById(
+        "cookie-accept"
+    );
+
+const cookieReject =
+    document.getElementById(
+        "cookie-reject"
     );
 
 
@@ -622,7 +986,16 @@ const castlingRights = {
 
 let currentUser = null;
 let currentMatch = null;
+let selectedAvatarKey = "knight";
 let googleInitialized = false;
+
+let activeSocialProfile = null;
+let activeDmUsername = null;
+let selectedTimeControl = "rapid10";
+let lastGamePgn = "";
+let lastGameFen = "";
+let lastGameData = null;
+let isSpectating = false;
 
 let settings = {
     music: true,
@@ -635,24 +1008,32 @@ let settings = {
 
 // Settings
 
-function loadSettings() {
-    try {
-        const saved =
-            JSON.parse(
-                localStorage.getItem(
-                    "pulseChessSettings"
-                ) || "{}"
-            );
+function optionalStorageAllowed() {
+    return localStorage.getItem(
+        "pulseChessCookieChoice"
+    ) === "accepted";
+}
 
-        settings = {
-            ...settings,
-            ...saved
-        };
-    } catch (error) {
-        console.warn(
-            "Could not load settings:",
-            error
-        );
+function loadSettings() {
+    if (optionalStorageAllowed()) {
+        try {
+            const saved =
+                JSON.parse(
+                    localStorage.getItem(
+                        "pulseChessSettings"
+                    ) || "{}"
+                );
+
+            settings = {
+                ...settings,
+                ...saved
+            };
+        } catch (error) {
+            console.warn(
+                "Could not load settings:",
+                error
+            );
+        }
     }
 
     settings.volume =
@@ -668,10 +1049,12 @@ function loadSettings() {
 }
 
 function saveSettings() {
-    localStorage.setItem(
-        "pulseChessSettings",
-        JSON.stringify(settings)
-    );
+    if (optionalStorageAllowed()) {
+        localStorage.setItem(
+            "pulseChessSettings",
+            JSON.stringify(settings)
+        );
+    }
 
     applySettings();
 }
@@ -708,68 +1091,501 @@ function syncSettingsControls() {
 
 // Utility
 
-function countryCodeToFlag(countryCode) {
-    if (
-        typeof countryCode !== "string" ||
-        countryCode.length !== 2
-    ) {
-        return "🌐";
-    }
+const AVATAR_SYMBOLS = {
+    knight: "♞",
+    rook: "♜",
+    bishop: "♝",
+    queen: "♛",
+    king: "♚",
+    pawn: "♟",
+    bolt: "⚡",
+    crown: "♕"
+};
 
-    return countryCode
-        .toUpperCase()
-        .split("")
-        .map(function(letter) {
-            return String.fromCodePoint(
-                127397 +
-                letter.charCodeAt(0)
-            );
-        })
-        .join("");
+const BOT_LABELS = {
+    rookie500: { name: "Beginner", rating: 500 },
+    club1000: { name: "Casual", rating: 1000 },
+    tactician1500: { name: "Challenger", rating: 1500 },
+    master2000: { name: "Expert", rating: 2000 },
+    grandmaster2500: { name: "Grandmaster", rating: 2500 },
+    elite3000: { name: "Elite", rating: 3000 }
+};
+
+const TIME_CONTROL_LABELS = {
+    bullet1: "1+0 Bullet",
+    blitz3: "3+0 Blitz",
+    blitz32: "3+2 Blitz",
+    blitz5: "5+0 Blitz",
+    rapid10: "10+0 Rapid",
+    rapid1510: "15+10 Rapid"
+};
+
+function avatarSymbol(
+    avatarKey,
+    fallback = "P"
+) {
+    return AVATAR_SYMBOLS[avatarKey] ||
+        String(fallback || "P")
+            .slice(0, 1)
+            .toUpperCase();
 }
 
-function renderFlagEmojis(root = document.body) {
+function syncAvatarChoices() {
+    if (!settingsAvatarGrid) {
+        return;
+    }
+
+    for (
+        const button of
+        settingsAvatarGrid.querySelectorAll(
+            "[data-avatar]"
+        )
+    ) {
+        button.classList.toggle(
+            "selected",
+            button.dataset.avatar ===
+                selectedAvatarKey
+        );
+    }
+}
+
+function updateUsernameCooldown() {
+    if (!usernameCooldown) {
+        return;
+    }
+
     if (
-        typeof window.twemoji === "undefined" ||
-        !root
+        !currentUser ||
+        !currentUser.username_changed_at
+    ) {
+        usernameCooldown.textContent =
+            "You can change your username now.";
+
+        saveUsernameButton.disabled = false;
+        return;
+    }
+
+    const changedAt =
+        new Date(
+            currentUser.username_changed_at
+        ).getTime();
+
+    const availableAt =
+        changedAt +
+        7 * 24 * 60 * 60 * 1000;
+
+    if (Date.now() >= availableAt) {
+        usernameCooldown.textContent =
+            "You can change your username now.";
+
+        saveUsernameButton.disabled = false;
+        return;
+    }
+
+    saveUsernameButton.disabled = true;
+
+    usernameCooldown.textContent =
+        `Next username change: ${new Date(
+            availableAt
+        ).toLocaleString()}`;
+}
+
+function renderHomePreviewBoard() {
+    if (
+        !homePreviewBoard ||
+        homePreviewBoard.childElementCount > 0
     ) {
         return;
     }
 
-    window.twemoji.parse(root, {
-        folder: "svg",
-        ext: ".svg",
-        className: "emoji country-emoji"
-    });
+    const preview = [
+        [
+            ["rook", "b"],
+            ["knight", "b"],
+            ["bishop", "b"],
+            ["queen", "b"],
+            ["king", "b"],
+            ["bishop", "b"],
+            ["knight", "b"],
+            ["rook", "b"]
+        ],
+        [
+            ["pawn", "b"],
+            ["pawn", "b"],
+            ["pawn", "b"],
+            ["pawn", "b"],
+            null,
+            ["pawn", "b"],
+            ["pawn", "b"],
+            ["pawn", "b"]
+        ],
+        [null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null],
+        [
+            null,
+            null,
+            null,
+            ["pawn", "w"],
+            ["pawn", "b"],
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            ["knight", "w"],
+            null,
+            null,
+            ["knight", "w"],
+            null,
+            null
+        ],
+        [
+            ["pawn", "w"],
+            ["pawn", "w"],
+            ["pawn", "w"],
+            null,
+            ["pawn", "w"],
+            ["pawn", "w"],
+            ["pawn", "w"],
+            ["pawn", "w"]
+        ],
+        [
+            ["rook", "w"],
+            null,
+            ["bishop", "w"],
+            ["queen", "w"],
+            ["king", "w"],
+            ["bishop", "w"],
+            null,
+            ["rook", "w"]
+        ]
+    ];
+
+    const fallbackSymbols = {
+        "pawn-w": "♙",
+        "knight-w": "♘",
+        "bishop-w": "♗",
+        "rook-w": "♖",
+        "queen-w": "♕",
+        "king-w": "♔",
+        "pawn-b": "♟",
+        "knight-b": "♞",
+        "bishop-b": "♝",
+        "rook-b": "♜",
+        "queen-b": "♛",
+        "king-b": "♚"
+    };
+
+    for (let y = 0; y < 8; y++) {
+        for (let x = 0; x < 8; x++) {
+            const square =
+                document.createElement("span");
+
+            square.className =
+                (x + y) % 2 === 0
+                    ? "home-preview-square light"
+                    : "home-preview-square dark";
+
+            if (
+                (y === 4 && x === 3) ||
+                (y === 4 && x === 4)
+            ) {
+                square.classList.add("last");
+            }
+
+            const previewPiece =
+                preview[y][x];
+
+            if (previewPiece) {
+                const [type, color] =
+                    previewPiece;
+
+                const image =
+                    document.createElement("img");
+
+                image.className =
+                    "home-preview-piece";
+
+                image.src =
+                    `assets/pieces/${type}-${color}.svg`;
+
+                image.alt =
+                    `${color === "w" ? "White" : "Black"} ${type}`;
+
+                image.draggable = false;
+
+                image.addEventListener(
+                    "error",
+                    function() {
+                        square.textContent =
+                            fallbackSymbols[
+                                `${type}-${color}`
+                            ] || "";
+                    },
+                    { once: true }
+                );
+
+                square.appendChild(
+                    image
+                );
+            }
+
+            homePreviewBoard.appendChild(
+                square
+            );
+        }
+    }
 }
 
-let flagRenderQueued = false;
+function initializeCookieBanner() {
+    if (!cookieBanner) {
+        return;
+    }
 
-const flagObserver =
-    new MutationObserver(function() {
-        if (flagRenderQueued) {
-            return;
+    const choice =
+        localStorage.getItem(
+            "pulseChessCookieChoice"
+        );
+
+    cookieBanner.classList.toggle(
+        "hidden",
+        Boolean(choice)
+    );
+}
+
+function saveCookieChoice(choice) {
+    localStorage.setItem(
+        "pulseChessCookieChoice",
+        choice
+    );
+
+    if (choice !== "accepted") {
+        localStorage.removeItem(
+            "pulseChessSettings"
+        );
+    }
+
+    cookieBanner?.classList.add(
+        "hidden"
+    );
+}
+
+function countryCodeToFlag(countryCode) {
+    if (
+        typeof countryCode !== "string" ||
+        !/^[A-Z]{2}$/i.test(countryCode)
+    ) {
+        return "Global";
+    }
+
+    return countryCode.toUpperCase();
+}
+
+function createCountryFlag(countryCode) {
+    const wrapper =
+        document.createElement("span");
+
+    wrapper.className =
+        "country-flag";
+
+    if (
+        typeof countryCode !== "string" ||
+        !/^[A-Z]{2}$/i.test(countryCode)
+    ) {
+        wrapper.textContent = "🌐";
+        wrapper.classList.add(
+            "country-flag-fallback"
+        );
+        return wrapper;
+    }
+
+    const code =
+        countryCode.toLowerCase();
+
+    const image =
+        document.createElement("img");
+
+    image.src =
+        `https://flagcdn.com/${code}.svg`;
+
+    image.alt =
+        `${countryCode.toUpperCase()} flag`;
+
+    image.loading = "lazy";
+    image.referrerPolicy = "no-referrer";
+    image.decoding = "async";
+
+    image.addEventListener(
+        "error",
+        function() {
+            wrapper.textContent =
+                countryCode.toUpperCase();
+
+            wrapper.classList.add(
+                "country-flag-fallback"
+            );
+        },
+        { once: true }
+    );
+
+    wrapper.appendChild(image);
+    return wrapper;
+}
+
+function setCountryFlag(
+    element,
+    countryCode
+) {
+    if (!element) {
+        return;
+    }
+
+    element.replaceChildren(
+        createCountryFlag(countryCode)
+    );
+}
+
+function setFlaggedName(
+    element,
+    countryCode,
+    username
+) {
+    if (!element) {
+        return;
+    }
+
+    const name =
+        document.createElement("span");
+
+    name.textContent =
+        String(username || "Player");
+
+    element.replaceChildren(
+        createCountryFlag(countryCode),
+        name
+    );
+
+    element.classList.add(
+        "flagged-name"
+    );
+}
+
+function syncBoardFromFen(fen) {
+    if (
+        typeof fen !== "string" ||
+        !fen.includes(" ")
+    ) {
+        return false;
+    }
+
+    const rows =
+        fen.split(" ")[0].split("/");
+
+    if (rows.length !== 8) {
+        return false;
+    }
+
+    const typeMap = {
+        p: "pawn",
+        n: "knight",
+        b: "bishop",
+        r: "rook",
+        q: "queen",
+        k: "king"
+    };
+
+    const symbolMap = {
+        white: {
+            pawn: "♙",
+            knight: "♘",
+            bishop: "♗",
+            rook: "♖",
+            queen: "♕",
+            king: "♔"
+        },
+        black: {
+            pawn: "♟",
+            knight: "♞",
+            bishop: "♝",
+            rook: "♜",
+            queen: "♛",
+            king: "♚"
+        }
+    };
+
+    const nextBoard = [];
+
+    for (let y = 0; y < 8; y++) {
+        const row = [];
+        let x = 0;
+
+        for (const token of rows[y]) {
+            if (/^[1-8]$/.test(token)) {
+                const count = Number(token);
+
+                for (
+                    let i = 0;
+                    i < count;
+                    i++
+                ) {
+                    row.push(null);
+                    x++;
+                }
+
+                continue;
+            }
+
+            const lower =
+                token.toLowerCase();
+
+            const type =
+                typeMap[lower];
+
+            if (!type || x >= 8) {
+                return false;
+            }
+
+            const color =
+                token === token.toUpperCase()
+                    ? "white"
+                    : "black";
+
+            row.push({
+                type,
+                color,
+                symbol:
+                    symbolMap[color][type]
+            });
+
+            x++;
         }
 
-        flagRenderQueued = true;
+        if (row.length !== 8) {
+            return false;
+        }
 
-        requestAnimationFrame(function() {
-            flagRenderQueued = false;
-            renderFlagEmojis();
-        });
-    });
+        nextBoard.push(row);
+    }
 
-flagObserver.observe(document.body, {
-    childList: true,
-    subtree: true,
-    characterData: true
-});
+    board.splice(
+        0,
+        board.length,
+        ...nextBoard
+    );
 
-renderFlagEmojis();
+    return true;
+}
 
 
 function escapeText(value) {
-    return String(value ?? "");
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 function formatReason(reason) {
@@ -779,8 +1595,11 @@ function formatReason(reason) {
         resignation: "Resignation",
         stalemate: "Stalemate",
         threefold: "Threefold repetition",
+        "threefold-repetition": "Threefold repetition",
         insufficient: "Insufficient material",
+        "insufficient-material": "Insufficient material",
         "50-move": "50-move rule",
+        "fifty-move": "50-move rule",
         draw: "Draw",
         disconnect: "Opponent disconnected"
     };
@@ -1662,6 +2481,11 @@ function updateAuthUI() {
         !loggedIn
     );
 
+    notificationWrap?.classList.toggle(
+        "hidden",
+        !loggedIn
+    );
+
     userDashboard.classList.toggle(
         "hidden",
         !loggedIn
@@ -1676,6 +2500,27 @@ function updateAuthUI() {
         navUsername.textContent = "";
         navRating.textContent = "";
 
+        notificationPanel?.classList.add(
+            "hidden"
+        );
+
+        notificationButton?.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        if (notificationBadge) {
+            notificationBadge.textContent = "0";
+            notificationBadge.classList.add(
+                "hidden"
+            );
+        }
+
+        if (dashboardAvatar) {
+            dashboardAvatar.textContent =
+                "♞";
+        }
+
         if (recentMatches) {
             recentMatches.innerHTML =
                 '<div class="empty-copy">Log in to see your recent games.</div>';
@@ -1684,18 +2529,28 @@ function updateAuthUI() {
         return;
     }
 
-    const flag =
-        countryCodeToFlag(
-            currentUser.country_code
-        );
-
-    navUsername.textContent =
-        `${flag} ${currentUser.username}`;
+    setFlaggedName(
+        navUsername,
+        currentUser.country_code,
+        currentUser.username
+    );
 
     navRating.textContent =
         `${currentUser.rating} Elo`;
 
-    dashboardFlag.textContent = flag;
+    setCountryFlag(
+        dashboardFlag,
+        currentUser.country_code
+    );
+
+    if (dashboardAvatar) {
+        dashboardAvatar.textContent =
+            avatarSymbol(
+                currentUser.avatar_key,
+                currentUser.username
+            );
+    }
+
     dashboardName.textContent =
         currentUser.username;
 
@@ -1713,6 +2568,19 @@ function updateAuthUI() {
 
     settingsUsername.value =
         currentUser.username;
+
+    selectedAvatarKey =
+        currentUser.avatar_key ||
+        "knight";
+
+    if (settingsBio) {
+        settingsBio.value =
+            currentUser.profile_bio || "";
+    }
+
+    syncAvatarChoices();
+    updateUsernameCooldown();
+    refreshNotifications();
 }
 
 function syncAccountSettings() {
@@ -1730,7 +2598,18 @@ function syncAccountSettings() {
     settingsUsername.value =
         currentUser.username;
 
+    selectedAvatarKey =
+        currentUser.avatar_key ||
+        "knight";
+
+    settingsBio.value =
+        currentUser.profile_bio || "";
+
+    syncAvatarChoices();
+    updateUsernameCooldown();
+
     settingsUsernameMessage.textContent = "";
+    settingsProfileMessage.textContent = "";
 }
 
 async function loadCurrentUser() {
@@ -1944,10 +2823,11 @@ async function loadHomeLeaderboard() {
             name.className =
                 "player-cell";
 
-            name.textContent =
-                `${countryCodeToFlag(
-                    player.country_code
-                )} ${player.username}`;
+            setFlaggedName(
+                name,
+                player.country_code,
+                player.username
+            );
 
             const rating =
                 document.createElement("b");
@@ -2103,9 +2983,7 @@ async function loadLeaderboard() {
                 data.country;
 
             leaderboardScopeNote.textContent =
-                `${countryCodeToFlag(
-                    data.country
-                )} ${countryName} rankings`;
+                `${data.country} · ${countryName} rankings`;
         } else if (
             isMyCountry &&
             !data.country
@@ -2134,8 +3012,8 @@ async function loadLeaderboard() {
 
             if (
                 currentUser &&
-                String(player.id) ===
-                    String(currentUser.id)
+                player.username.toLowerCase() ===
+                    currentUser.username.toLowerCase()
             ) {
                 row.classList.add("me");
             }
@@ -2168,9 +3046,10 @@ async function loadLeaderboard() {
                 "leaderboard-avatar";
 
             avatar.textContent =
-                player.username
-                    .slice(0, 1)
-                    .toUpperCase();
+                avatarSymbol(
+                    player.avatar_key,
+                    player.username
+                );
 
             const playerCopy =
                 document.createElement("div");
@@ -2178,10 +3057,11 @@ async function loadLeaderboard() {
             const playerName =
                 document.createElement("strong");
 
-            playerName.textContent =
-                `${countryCodeToFlag(
-                    player.country_code
-                )} ${player.username}`;
+            setFlaggedName(
+                playerName,
+                player.country_code,
+                player.username
+            );
 
             const country =
                 document.createElement("small");
@@ -2301,10 +3181,11 @@ async function loadRecentMatches() {
                 const name =
                     document.createElement("strong");
 
-                name.textContent =
-                    `${countryCodeToFlag(
-                        match.opponent_country_code
-                    )} ${match.opponent_username}`;
+                setFlaggedName(
+                    name,
+                    match.opponent_country_code,
+                    match.opponent_username
+                );
 
                 const reason =
                     document.createElement("small");
@@ -2340,6 +3221,20 @@ async function loadRecentMatches() {
                     delta
                 );
 
+                if (match.id) {
+                    row.classList.add("clickable-match");
+                    row.tabIndex = 0;
+                    row.addEventListener("click", function() {
+                        openStoredMatch(match.id);
+                    });
+                    row.addEventListener("keydown", function(event) {
+                        if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault();
+                            openStoredMatch(match.id);
+                        }
+                    });
+                }
+
                 recentMatches.appendChild(
                     row
                 );
@@ -2372,19 +3267,21 @@ function setPlayerCard(
             ? whiteAvatar
             : blackAvatar;
 
-    nameElement.textContent =
-        `${countryCodeToFlag(
-            user?.country_code
-        )} ${user?.username || color}`;
+    setFlaggedName(
+        nameElement,
+        user?.country_code,
+        user?.username || color
+    );
 
     ratingElement.textContent =
         user?.rating ??
         "—";
 
     avatarElement.textContent =
-        (user?.username || color)
-            .slice(0, 1)
-            .toUpperCase();
+        avatarSymbol(
+            user?.avatar_key,
+            user?.username || color
+        );
 }
 
 function updateClockClasses() {
@@ -2422,30 +3319,45 @@ function showMatch(
 ) {
     resetGame();
 
+    if (data?.fen) {
+        syncBoardFromFen(
+            data.fen
+        );
+    }
+
     currentMatch = data;
+    lastGamePgn = data?.pgn || "";
+    lastGameFen = data?.fen || "";
+    isSpectating = data?.color === "spectator" || data?.mode === "spectate";
 
     navbar.classList.add("hidden");
+    setFooterVisible(false);
 
-    playerColor = data.color;
+    playerColor = isSpectating ? "spectator" : data.color;
 
     updateBoardOrientation();
     updateCoordinates();
 
-    currentTurn = "white";
+    currentTurn = data?.currentTurn || "white";
     gameOver = false;
     inMatch = true;
 
     playerColorDisplay.textContent =
-        playerColor === "white"
-            ? "White"
-            : "Black";
+        isSpectating
+            ? "Spectator"
+            : playerColor === "white"
+                ? "White"
+                : "Black";
 
-    turnDisplay.textContent = "White";
+    turnDisplay.textContent =
+        currentTurn === "white" ? "White" : "Black";
 
     gameStatus.textContent =
-        playerColor === "white"
-            ? "Your turn"
-            : "Opponent's turn";
+        isSpectating
+            ? "Watching live"
+            : currentTurn === playerColor
+                ? "Your turn"
+                : "Opponent's turn";
 
     setPlayerCard(
         "white",
@@ -2457,14 +3369,21 @@ function showMatch(
         data.black
     );
 
+    const timeLabel =
+        data.timeControlLabel ||
+        TIME_CONTROL_LABELS[data.timeControlKey] ||
+        "10+0 Rapid";
+
     gameModePill.textContent =
-        data.mode === "bot"
-            ? "Rapid · Practice"
-            : data.mode === "private"
-                ? "Rapid · Private"
-                : data.rated
-                    ? "Rapid · Rated"
-                    : "Rapid · Test game";
+        isSpectating
+            ? `${timeLabel} · Spectating`
+            : data.mode === "bot"
+                ? `${timeLabel} · ${data.opponent?.username || "Bot"} · ${data.opponent?.rating || "—"} Elo`
+                : data.mode === "private"
+                    ? `${timeLabel} · Private`
+                    : data.rated
+                        ? `${timeLabel} · Rated`
+                        : `${timeLabel} · Test game`;
 
     hideAllPages();
     game.classList.remove("hidden");
@@ -2475,8 +3394,26 @@ function showMatch(
     clearMoves();
     restoreSelectedSquare();
 
+    if (data?.pgn && (data.resume || isSpectating)) {
+        restoreMoveHistoryFromPgn(data.pgn);
+    }
+
+    if (data?.clocks) {
+        whiteTime = Number(data.clocks.whiteTime || whiteTime);
+        blackTime = Number(data.clocks.blackTime || blackTime);
+        clockTurn = currentTurn;
+        clockLastUpdate = Date.now();
+        renderClocks();
+    }
+
+    drawButton?.classList.toggle("hidden", isSpectating || data.mode === "bot");
+    resignButton?.classList.toggle("hidden", isSpectating);
+    chatInput.disabled = isSpectating;
+    chatSend.disabled = isSpectating;
+
     renderPieces();
     updateCheckHighlight();
+    updateOpeningName();
 
     playSfx("match");
     startMatchMusic();
@@ -2484,37 +3421,43 @@ function showMatch(
     updateClockClasses();
 }
 
-function startQuickMatch() {
+function startQuickMatch(
+    timeControl = selectedTimeControl
+) {
     if (!currentUser) {
         showLoginPage();
-
         loginError.textContent =
             "Log in to play online.";
-
         return;
     }
 
-    ensureAudio();
+    selectedTimeControl =
+        TIME_CONTROL_LABELS[timeControl]
+            ? timeControl
+            : "rapid10";
 
+    quickMatchModal?.classList.add("hidden");
+    ensureAudio();
     hideAllPages();
     showNavbar();
+    setFooterVisible(false);
 
-    matchmaking.classList.remove(
-        "hidden"
-    );
-
+    matchmaking.classList.remove("hidden");
     setActiveNav("nav-play-button");
 
     matchmakingTitle.textContent =
-        "Finding opponent";
-
+        `Finding ${TIME_CONTROL_LABELS[selectedTimeControl]}`;
     matchmakingStatus.textContent =
-        "Searching for a player near your rating…";
+        "Searching for another player on the same clock…";
 
-    socket.emit("find-match");
+    socket.emit("find-match", {
+        timeControl: selectedTimeControl
+    });
 }
 
-function startBotMatch() {
+function startBotMatch(
+    difficulty = "club1000"
+) {
     if (!currentUser) {
         showLoginPage();
 
@@ -2526,24 +3469,47 @@ function startBotMatch() {
 
     ensureAudio();
 
+    botModal?.classList.add(
+        "hidden"
+    );
+
     hideAllPages();
     showNavbar();
+    setFooterVisible(false);
 
     matchmaking.classList.remove(
         "hidden"
     );
 
+    const botLabel =
+        BOT_LABELS[difficulty] ||
+        BOT_LABELS.club1000;
+
     matchmakingTitle.textContent =
-        "Preparing Pulse Bot";
+        `Preparing ${botLabel.name}`;
 
     matchmakingStatus.textContent =
-        "Setting up an unrated practice game…";
+        `${botLabel.rating} Elo target · ${TIME_CONTROL_LABELS[botTimeControl?.value] || "10+0 Rapid"} · unrated`;
 
-    socket.emit("play-bot");
+    const timeControl =
+        botTimeControl?.value ||
+        selectedTimeControl;
+
+    socket.emit(
+        "play-bot",
+        {
+            difficulty,
+            timeControl
+        }
+    );
 }
 
 function showResult(data) {
     stopMatchMusic();
+
+    lastGameData = data || {};
+    lastGamePgn = data?.pgn || lastGamePgn || "";
+    lastGameFen = data?.fen || lastGameFen || "";
 
     inMatch = false;
     gameOver = true;
@@ -2579,9 +3545,11 @@ function showResult(data) {
                 : "Draw";
 
     resultReason.textContent =
-        formatReason(
-            data.reason
-        );
+        data.reason === "stalemate"
+            ? "Stalemate · no legal moves while the king is not in check"
+            : formatReason(
+                data.reason
+            );
 
     if (data.rated) {
         ratingResult.classList.remove(
@@ -2708,12 +3676,12 @@ function createConfetti() {
 
 socket.on(
     "waiting-for-player",
-    function() {
+    function(data) {
         matchmakingTitle.textContent =
             "Searching…";
 
         matchmakingStatus.textContent =
-            "Waiting for another player to enter the queue.";
+            `Waiting for another ${data?.label || TIME_CONTROL_LABELS[selectedTimeControl] || "player"} player.`;
     }
 );
 
@@ -2725,9 +3693,7 @@ socket.on(
 
         matchmakingStatus.textContent =
             data.opponent
-                ? `${countryCodeToFlag(
-                    data.opponent.country_code
-                )} ${data.opponent.username} · ${data.opponent.rating} Elo`
+                ? `${data.opponent.username} · ${data.opponent.rating} Elo`
                 : "Starting game…";
 
         playSfx("match");
@@ -2736,9 +3702,11 @@ socket.on(
             function() {
                 showMatch(data);
             },
-            settings.motion
-                ? 420
-                : 0
+            data?.resume
+                ? 0
+                : settings.motion
+                    ? 420
+                    : 0
         );
     }
 );
@@ -2836,6 +3804,20 @@ socket.on(
 );
 
 socket.on(
+    "position-sync",
+    function(data) {
+        if (
+            syncBoardFromFen(
+                data?.fen
+            )
+        ) {
+            renderPieces();
+            updateCheckHighlight();
+        }
+    }
+);
+
+socket.on(
     "turn-changed",
     function(turn) {
         currentTurn = turn;
@@ -2847,9 +3829,11 @@ socket.on(
 
         if (!gameOver) {
             gameStatus.textContent =
-                turn === playerColor
-                    ? "Your turn"
-                    : "Opponent's turn";
+                isSpectating
+                    ? "Watching live"
+                    : turn === playerColor
+                        ? "Your turn"
+                        : "Opponent's turn";
         }
 
         checkGameState();
@@ -2869,10 +3853,27 @@ socket.on(
             return;
         }
 
-        addChatMessage(
+        const sender =
             data?.sender ||
-                "Opponent",
+            "Opponent";
+
+        addChatMessage(
+            currentUser &&
+            sender === currentUser.username
+                ? "You"
+                : sender,
             data?.message || ""
+        );
+    }
+);
+
+socket.on(
+    "chat-error",
+    function(data) {
+        showToast(
+            data?.error ||
+                "Message could not be sent.",
+            "error"
         );
     }
 );
@@ -2903,7 +3904,167 @@ socket.on(
 socket.on(
     "game-ended",
     function(data) {
+        if (
+            syncBoardFromFen(
+                data?.fen
+            )
+        ) {
+            renderPieces();
+            updateCheckHighlight();
+        }
+
         showResult(data);
+    }
+);
+
+socket.on(
+    "spectator-game-ended",
+    function(data) {
+        if (!isSpectating) {
+            return;
+        }
+
+        if (syncBoardFromFen(data?.fen)) {
+            renderPieces();
+            updateCheckHighlight();
+        }
+
+        lastGamePgn = data?.pgn || lastGamePgn || "";
+        lastGameFen = data?.fen || lastGameFen || "";
+        gameOver = true;
+        inMatch = false;
+        updateClockClasses();
+        gameStatus.textContent =
+            `Game over · ${formatReason(data?.reason)}`;
+        showToast(
+            `Game over · ${formatReason(data?.reason)}`,
+            "info"
+        );
+    }
+);
+
+socket.on(
+    "opponent-disconnected",
+    function(data) {
+        if (isSpectating) {
+            return;
+        }
+
+        const seconds = Math.round(
+            Number(data?.graceMs || 45000) / 1000
+        );
+
+        gameStatus.textContent =
+            `Opponent disconnected · waiting up to ${seconds}s for reconnect`;
+
+        showToast(
+            "Opponent disconnected. Their reconnect timer started.",
+            "info"
+        );
+    }
+);
+
+socket.on(
+    "opponent-reconnected",
+    function() {
+        showToast("Opponent reconnected.", "success");
+        checkGameState();
+    }
+);
+
+socket.on(
+    "draw-offered",
+    function() {
+        drawOfferModal?.classList.remove("hidden");
+    }
+);
+
+socket.on(
+    "draw-offer-sent",
+    function() {
+        showToast("Draw offer sent.", "info");
+    }
+);
+
+socket.on(
+    "draw-declined",
+    function() {
+        drawOfferModal?.classList.add("hidden");
+        showToast("Draw offer declined.", "info");
+    }
+);
+
+socket.on(
+    "spectate-started",
+    function(data) {
+        showMatch(data);
+        showToast("Watching live game.", "info");
+    }
+);
+
+socket.on(
+    "spectate-error",
+    function(data) {
+        showToast(data?.error || "Could not spectate game.", "error");
+    }
+);
+
+socket.on(
+    "social-refresh",
+    function() {
+        if (currentUser) {
+            loadSocialLists();
+
+            if (
+                activeSocialProfile &&
+                !activeDmUsername
+            ) {
+                openPlayerProfile(
+                    activeSocialProfile.username
+                );
+            }
+        }
+    }
+);
+
+socket.on(
+    "direct-message",
+    function(data) {
+        const username =
+            data?.with;
+
+        const message =
+            data?.message;
+
+        if (
+            typeof username !== "string" ||
+            !message
+        ) {
+            return;
+        }
+
+        if (
+            activeDmUsername &&
+            activeDmUsername.toLowerCase() ===
+                username.toLowerCase() &&
+            !directMessagePanel.classList.contains(
+                "hidden"
+            )
+        ) {
+            appendDirectMessage(
+                {
+                    ...message,
+                    mine: false
+                }
+            );
+        } else {
+            showToast(
+                `New message from ${username}.`,
+                "info"
+            );
+        }
+
+        loadSocialLists();
     }
 );
 
@@ -2958,6 +4119,19 @@ socket.on(
         showToast(
             data?.error ||
             "Matchmaking failed.",
+            "error"
+        );
+    }
+);
+
+socket.on(
+    "bot-engine-error",
+    function(data) {
+        showHomePage();
+
+        showToast(
+            data?.error ||
+            "The bot engine stopped unexpectedly.",
             "error"
         );
     }
@@ -3055,11 +4229,6 @@ function sendChatMessage() {
         cleanMessage
     );
 
-    addChatMessage(
-        "You",
-        cleanMessage
-    );
-
     chatInput.value = "";
 
     chatInput.focus();
@@ -3125,7 +4294,12 @@ function hideAllPages() {
     const pages = [
         menu,
         leaderboardPage,
+        socialPage,
         settingsPage,
+        privacyPage,
+        termsPage,
+        cookiesPage,
+        fairPlayPage,
         signupPage,
         loginPage,
         matchmaking,
@@ -3144,6 +4318,7 @@ function setActiveNav(activeId) {
         homeButton,
         navPlayButton,
         leaderboardButton,
+        playersButton,
         settingsButton
     ];
 
@@ -3163,9 +4338,17 @@ function showNavbar() {
     navbar?.classList.remove("hidden");
 }
 
+function setFooterVisible(visible) {
+    globalFooter?.classList.toggle(
+        "hidden",
+        !visible
+    );
+}
+
 function showHomePage() {
     hideAllPages();
     showNavbar();
+    setFooterVisible(true);
 
     menu.classList.remove("hidden");
     setActiveNav("home-button");
@@ -3180,6 +4363,7 @@ function showHomePage() {
 function showLoginPage() {
     hideAllPages();
     showNavbar();
+    setFooterVisible(true);
 
     loginPage.classList.remove("hidden");
     setActiveNav(null);
@@ -3195,6 +4379,7 @@ function showLoginPage() {
 function showSignupPage() {
     hideAllPages();
     showNavbar();
+    setFooterVisible(true);
 
     signupPage.classList.remove("hidden");
     setActiveNav(null);
@@ -3207,9 +4392,21 @@ function showSignupPage() {
     );
 }
 
+function showVerifyEmailPage(email) {
+    hideAllPages(); showNavbar(); setFooterVisible(true);
+    pendingVerificationEmail = email;
+    verifyEmailAddress.textContent = email;
+    verifyEmailError.textContent = "";
+    verificationCode.value = "";
+    verifyEmailPage.classList.remove("hidden");
+    setActiveNav(null);
+    verificationCode.focus();
+}
+
 function showLeaderboardPage() {
     hideAllPages();
     showNavbar();
+    setFooterVisible(true);
 
     leaderboardPage.classList.remove("hidden");
     setActiveNav("leaderboard-button");
@@ -3221,12 +4418,41 @@ function showLeaderboardPage() {
 function showSettingsPage() {
     hideAllPages();
     showNavbar();
+    setFooterVisible(true);
 
     settingsPage.classList.remove("hidden");
     setActiveNav("settings-button");
 
     syncSettingsControls();
     syncAccountSettings();
+}
+
+function showPrivacyPage() {
+    hideAllPages();
+    showNavbar();
+    setFooterVisible(true);
+
+    privacyPage.classList.remove("hidden");
+    setActiveNav(null);
+
+    stopMatchMusic();
+    window.scrollTo({
+        top: 0,
+        behavior:
+            settings.motion
+                ? "smooth"
+                : "auto"
+    });
+}
+
+function showLegalPage(page) {
+    hideAllPages();
+    showNavbar();
+    setFooterVisible(true);
+    page?.classList.remove("hidden");
+    setActiveNav(null);
+    stopMatchMusic();
+    window.scrollTo({ top: 0, behavior: settings.motion ? "smooth" : "auto" });
 }
 
 function formatTime(milliseconds) {
@@ -3770,11 +4996,80 @@ function getMoveNotation(
 }
 
 
+function restoreMoveHistoryFromPgn(pgn) {
+    if (!pgn) {
+        return;
+    }
+
+    const clean = String(pgn)
+        .replace(/\[[^\]]*\]/g, " ")
+        .replace(/\{[^}]*\}/g, " ")
+        .replace(/\([^)]*\)/g, " ")
+        .replace(/\d+\.(?:\.\.)?/g, " ")
+        .replace(/1-0|0-1|1\/2-1\/2|\*/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    moveHistory = clean
+        ? clean.split(" ").filter(Boolean)
+        : [];
+
+    renderMoveHistory();
+    updateOpeningName();
+}
+
+function detectOpeningName() {
+    const moves = moveHistory
+        .map(function(move) {
+            return String(move || "")
+                .replace(/[+#?!]/g, "")
+                .trim();
+        });
+
+    const sequence = moves.join(" ");
+    const openings = [
+        ["e4 e5 Nf3 Nc6 Bb5", "Ruy Lopez"],
+        ["e4 e5 Nf3 Nc6 Bc4", "Italian Game"],
+        ["e4 c5", "Sicilian Defense"],
+        ["e4 e6", "French Defense"],
+        ["e4 c6", "Caro-Kann Defense"],
+        ["e4 d5", "Scandinavian Defense"],
+        ["e4 Nf6", "Alekhine Defense"],
+        ["d4 d5 c4", "Queen's Gambit"],
+        ["d4 Nf6 c4 g6", "King's Indian Defense"],
+        ["d4 Nf6 c4 e6 Nc3 Bb4", "Nimzo-Indian Defense"],
+        ["d4 Nf6 c4 e6 Nf3 d5", "Queen's Indian / QGD Setup"],
+        ["d4 f5", "Dutch Defense"],
+        ["c4", "English Opening"],
+        ["Nf3", "Réti Opening"]
+    ];
+
+    for (const [prefix, name] of openings) {
+        if (sequence.startsWith(prefix)) {
+            return name;
+        }
+    }
+
+    if (moves.length === 0) {
+        return "Starting position";
+    }
+
+    return "Opening phase";
+}
+
+function updateOpeningName() {
+    if (openingName) {
+        openingName.textContent =
+            detectOpeningName();
+    }
+}
+
 function addMoveToHistory(notation) {
 
     moveHistory.push(notation);
 
     renderMoveHistory();
+    updateOpeningName();
 }
 
 
@@ -5635,42 +6930,32 @@ function hasAnyLegalMove(color) {
 function checkGameState() {
     updateCheckHighlight();
 
-    if (gameOver) {
+    if (
+        gameOver ||
+        !inMatch
+    ) {
         return;
     }
-
-    const hasMoves =
-        hasAnyLegalMove(currentTurn);
-
-    if (hasMoves) {
-
-        if (isKingInCheck(currentTurn)) {
-            gameStatus.textContent =
-                currentTurn === playerColor
-                    ? "Your king is in check!"
-                    : "Opponent is in check!";
-        }
-
-        return;
-    }
-
-    gameOver = true;
 
     if (isKingInCheck(currentTurn)) {
-
-        const winner =
-            oppositeColor(currentTurn);
-
         gameStatus.textContent =
-            winner === playerColor
-                ? "Checkmate! You win!"
-                : "Checkmate! You lose.";
-
-    } else {
-
-        gameStatus.textContent =
-            "Stalemate. Draw.";
+            isSpectating
+                ? `${currentTurn === "white" ? "White" : "Black"} is in check`
+                : currentTurn === playerColor
+                    ? "Your king is in check!"
+                    : "Opponent is in check!";
+        return;
     }
+
+    if (isSpectating) {
+        gameStatus.textContent = "Watching live";
+        return;
+    }
+
+    gameStatus.textContent =
+        currentTurn === playerColor
+            ? "Your turn"
+            : "Opponent's turn";
 }
 
 // Square Click
@@ -5941,10 +7226,1364 @@ function populateBoard(
 
 
 
+
+// Social
+
+async function fetchJson(
+    url,
+    options = {}
+) {
+    const response =
+        await fetch(url, options);
+
+    let data = {};
+
+    try {
+        data =
+            await response.json();
+    } catch (error) {
+        data = {};
+    }
+
+    if (!response.ok) {
+        throw new Error(
+            data.error ||
+            "Something went wrong."
+        );
+    }
+
+    return data;
+}
+
+function socialRelationshipLabel(state) {
+    const labels = {
+        none: "Add friend",
+        outgoing: "Request sent",
+        incoming: "Accept request",
+        friends: "Friends",
+        self: "You"
+    };
+
+    return labels[state] ||
+        "Player";
+}
+
+function createSocialPlayerRow(
+    player,
+    {
+        request = false,
+        friend = false
+    } = {}
+) {
+    const row =
+        document.createElement("div");
+
+    row.className =
+        "social-player-row";
+
+    const openButton =
+        document.createElement("button");
+
+    openButton.type = "button";
+    openButton.className =
+        "social-player-open";
+
+    const avatar =
+        document.createElement("span");
+
+    avatar.className =
+        "social-player-avatar";
+
+    avatar.textContent =
+        avatarSymbol(
+            player.avatar_key,
+            player.username
+        );
+
+    const copy =
+        document.createElement("span");
+
+    copy.className =
+        "social-player-copy";
+
+    const name =
+        document.createElement("strong");
+
+    setFlaggedName(
+        name,
+        player.country_code,
+        player.username
+    );
+
+    const meta =
+        document.createElement("small");
+
+    const presenceLabel =
+        player.presence === "in_game"
+            ? "In game"
+            : player.presence === "online"
+                ? "Online"
+                : "Offline";
+
+    meta.textContent =
+        `${player.rating} Elo · ${presenceLabel}`;
+
+    copy.append(
+        name,
+        meta
+    );
+
+    openButton.append(
+        avatar,
+        copy
+    );
+
+    openButton.addEventListener(
+        "click",
+        function() {
+            openPlayerProfile(
+                player.username
+            );
+        }
+    );
+
+    row.appendChild(openButton);
+
+    const actions =
+        document.createElement("div");
+
+    actions.className =
+        "social-row-actions";
+
+    if (request) {
+        const accept =
+            document.createElement("button");
+
+        accept.type = "button";
+        accept.className =
+            "mini-action accept";
+
+        accept.textContent = "Accept";
+
+        accept.addEventListener(
+            "click",
+            async function() {
+                await respondToFriendRequest(
+                    player.username,
+                    "accept"
+                );
+            }
+        );
+
+        const decline =
+            document.createElement("button");
+
+        decline.type = "button";
+        decline.className =
+            "mini-action";
+
+        decline.textContent = "Decline";
+
+        decline.addEventListener(
+            "click",
+            async function() {
+                await respondToFriendRequest(
+                    player.username,
+                    "decline"
+                );
+            }
+        );
+
+        actions.append(
+            accept,
+            decline
+        );
+    } else if (friend) {
+        const message =
+            document.createElement("button");
+
+        message.type = "button";
+        message.className =
+            "mini-action";
+
+        message.textContent =
+            player.unread_count > 0
+                ? `Chat ${player.unread_count}`
+                : "Chat";
+
+        message.addEventListener(
+            "click",
+            function() {
+                activeSocialProfile = {
+                    ...player,
+                    friendship: "friends"
+                };
+
+                openDirectMessages(
+                    player.username
+                );
+            }
+        );
+
+        actions.appendChild(message);
+    } else {
+        const status =
+            document.createElement("span");
+
+        status.className =
+            "social-status";
+
+        status.textContent =
+            socialRelationshipLabel(
+                player.friendship
+            );
+
+        actions.appendChild(status);
+    }
+
+    if (actions.childElementCount > 0) {
+        row.appendChild(actions);
+    }
+
+    return row;
+}
+
+async function searchPlayers() {
+    if (!currentUser) {
+        showLoginPage();
+        return;
+    }
+
+    const query =
+        playerSearchInput.value
+            .trim();
+
+    if (!query) {
+        playerSearchResults.innerHTML =
+            '<p class="social-empty-copy">Type a username to search.</p>';
+        return;
+    }
+
+    playerSearchResults.innerHTML =
+        '<p class="social-empty-copy">Searching…</p>';
+
+    try {
+        const data =
+            await fetchJson(
+                `/api/players/search?q=${encodeURIComponent(
+                    query
+                )}`
+            );
+
+        playerSearchResults.innerHTML = "";
+
+        if (
+            !Array.isArray(data.players) ||
+            data.players.length === 0
+        ) {
+            playerSearchResults.innerHTML =
+                '<p class="social-empty-copy">No players found.</p>';
+            return;
+        }
+
+        for (const player of data.players) {
+            playerSearchResults.appendChild(
+                createSocialPlayerRow(
+                    player
+                )
+            );
+        }
+    } catch (error) {
+        playerSearchResults.innerHTML =
+            `<p class="social-empty-copy">${escapeText(
+                error.message
+            )}</p>`;
+    }
+}
+
+function renderNotifications(
+    requests = [],
+    friends = []
+) {
+    if (
+        !notificationList ||
+        !notificationBadge
+    ) {
+        return;
+    }
+
+    const unreadFriends = friends.filter(
+        function(friend) {
+            return Number(friend.unread_count || 0) > 0;
+        }
+    );
+
+    const unreadMessages = unreadFriends.reduce(
+        function(total, friend) {
+            return total + Number(friend.unread_count || 0);
+        },
+        0
+    );
+
+    const total =
+        requests.length + unreadMessages;
+
+    notificationBadge.textContent =
+        total > 99 ? "99+" : String(total);
+
+    notificationBadge.classList.toggle(
+        "hidden",
+        total === 0
+    );
+
+    notificationList.innerHTML = "";
+
+    if (total === 0) {
+        notificationList.innerHTML =
+            '<p class="notification-empty">You\'re all caught up.</p>';
+        return;
+    }
+
+    for (const player of requests) {
+        const row = document.createElement("div");
+        row.className = "notification-item";
+
+        const avatar = document.createElement("div");
+        avatar.className = "notification-avatar";
+        avatar.textContent = avatarSymbol(
+            player.avatar_key,
+            player.username
+        );
+
+        const copy = document.createElement("div");
+        copy.className = "notification-copy";
+
+        const title = document.createElement("strong");
+        title.textContent = player.username;
+
+        const text = document.createElement("span");
+        text.textContent = "sent you a friend request";
+
+        copy.append(title, text);
+
+        const actions = document.createElement("div");
+        actions.className = "notification-actions";
+
+        const accept = document.createElement("button");
+        accept.type = "button";
+        accept.className = "notification-accept";
+        accept.textContent = "Accept";
+        accept.addEventListener(
+            "click",
+            async function(event) {
+                event.stopPropagation();
+                await respondToFriendRequest(
+                    player.username,
+                    "accept"
+                );
+                refreshNotifications();
+            }
+        );
+
+        const view = document.createElement("button");
+        view.type = "button";
+        view.className = "notification-view";
+        view.textContent = "View";
+        view.addEventListener(
+            "click",
+            function(event) {
+                event.stopPropagation();
+                closeNotificationPanel();
+                openPlayerProfile(player.username);
+            }
+        );
+
+        actions.append(accept, view);
+        row.append(avatar, copy, actions);
+        notificationList.appendChild(row);
+    }
+
+    for (const friend of unreadFriends) {
+        const count = Number(friend.unread_count || 0);
+        const row = document.createElement("button");
+        row.type = "button";
+        row.className = "notification-item notification-message-item";
+
+        const avatar = document.createElement("div");
+        avatar.className = "notification-avatar";
+        avatar.textContent = avatarSymbol(
+            friend.avatar_key,
+            friend.username
+        );
+
+        const copy = document.createElement("div");
+        copy.className = "notification-copy";
+
+        const title = document.createElement("strong");
+        title.textContent = friend.username;
+
+        const text = document.createElement("span");
+        text.textContent =
+            `${count} unread message${count === 1 ? "" : "s"}`;
+
+        copy.append(title, text);
+
+        const arrow = document.createElement("span");
+        arrow.className = "notification-arrow";
+        arrow.textContent = "→";
+
+        row.append(avatar, copy, arrow);
+        row.addEventListener(
+            "click",
+            async function() {
+                closeNotificationPanel();
+                showSocialPage(false);
+                await openDirectMessages(friend.username);
+                refreshNotifications();
+            }
+        );
+
+        notificationList.appendChild(row);
+    }
+}
+
+async function refreshNotifications() {
+    if (!currentUser) {
+        return;
+    }
+
+    try {
+        const [friendsData, requestsData] =
+            await Promise.all([
+                fetchJson("/api/social/friends"),
+                fetchJson("/api/social/requests")
+            ]);
+
+        renderNotifications(
+            Array.isArray(requestsData.requests)
+                ? requestsData.requests
+                : [],
+            Array.isArray(friendsData.friends)
+                ? friendsData.friends
+                : []
+        );
+    } catch (error) {
+        console.warn(
+            "Could not refresh notifications:",
+            error.message
+        );
+    }
+}
+
+function closeNotificationPanel() {
+    notificationPanel?.classList.add("hidden");
+    notificationButton?.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+}
+
+async function loadSocialLists() {
+    if (!currentUser) {
+        return;
+    }
+
+    try {
+        const [
+            friendsData,
+            requestsData
+        ] = await Promise.all([
+            fetchJson(
+                "/api/social/friends"
+            ),
+            fetchJson(
+                "/api/social/requests"
+            )
+        ]);
+
+        const friends =
+            Array.isArray(
+                friendsData.friends
+            )
+                ? friendsData.friends
+                : [];
+
+        const requests =
+            Array.isArray(
+                requestsData.requests
+            )
+                ? requestsData.requests
+                : [];
+
+        friendCount.textContent =
+            String(friends.length);
+
+        friendRequestCount.textContent =
+            String(requests.length);
+
+        friendList.innerHTML = "";
+        friendRequestList.innerHTML = "";
+
+        if (friends.length === 0) {
+            friendList.innerHTML =
+                '<p class="social-empty-copy">Add a player to start chatting.</p>';
+        } else {
+            for (const player of friends) {
+                friendList.appendChild(
+                    createSocialPlayerRow(
+                        player,
+                        {
+                            friend: true
+                        }
+                    )
+                );
+            }
+        }
+
+        if (requests.length === 0) {
+            friendRequestList.innerHTML =
+                '<p class="social-empty-copy">No pending requests.</p>';
+        } else {
+            for (const player of requests) {
+                friendRequestList.appendChild(
+                    createSocialPlayerRow(
+                        player,
+                        {
+                            request: true
+                        }
+                    )
+                );
+            }
+        }
+
+        renderNotifications(
+            requests,
+            friends
+        );
+    } catch (error) {
+        showToast(
+            error.message,
+            "error"
+        );
+    }
+}
+
+function renderProfileRecentGames(matches) {
+    profileRecentGames.innerHTML = "";
+
+    if (
+        !Array.isArray(matches) ||
+        matches.length === 0
+    ) {
+        profileRecentGames.innerHTML =
+            '<p class="social-empty-copy">No rated games yet.</p>';
+        return;
+    }
+
+    for (const match of matches) {
+        const row =
+            document.createElement("div");
+
+        row.className =
+            `profile-game-row ${match.outcome || ""}`;
+
+        const outcome =
+            document.createElement("span");
+
+        outcome.className =
+            "profile-game-outcome";
+
+        outcome.textContent =
+            match.outcome === "win"
+                ? "W"
+                : match.outcome === "loss"
+                    ? "L"
+                    : "D";
+
+        const copy =
+            document.createElement("div");
+
+        const opponent =
+            document.createElement("strong");
+
+        opponent.textContent =
+            `vs ${match.opponent_username}`;
+
+        const detail =
+            document.createElement("small");
+
+        const date =
+            match.ended_at
+                ? new Date(
+                    match.ended_at
+                ).toLocaleDateString()
+                : "";
+
+        detail.textContent =
+            `${formatReason(
+                match.reason
+            )}${date ? ` · ${date}` : ""}`;
+
+        copy.append(
+            opponent,
+            detail
+        );
+
+        row.append(
+            outcome,
+            copy
+        );
+
+        if (match.id) {
+            row.tabIndex = 0;
+            row.setAttribute("role", "button");
+            row.addEventListener("click", function() {
+                openStoredMatch(match.id);
+            });
+            row.addEventListener("keydown", function(event) {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openStoredMatch(match.id);
+                }
+            });
+        }
+
+        profileRecentGames.appendChild(
+            row
+        );
+    }
+}
+
+function renderPlayerProfile(data) {
+    const player =
+        data.player;
+
+    activeSocialProfile = player;
+    activeDmUsername = null;
+
+    socialWelcome.classList.add(
+        "hidden"
+    );
+
+    directMessagePanel.classList.add(
+        "hidden"
+    );
+
+    playerProfilePanel.classList.remove(
+        "hidden"
+    );
+
+    profileViewAvatar.textContent =
+        avatarSymbol(
+            player.avatar_key,
+            player.username
+        );
+
+    profileViewName.textContent =
+        player.username;
+
+    setCountryFlag(
+        profileViewFlag,
+        player.country_code
+    );
+
+    profileViewBio.textContent =
+        player.profile_bio ||
+        "No bio yet.";
+
+    profileViewRating.textContent =
+        `${player.rating} Elo`;
+
+    if (profileViewPresence) {
+        profileViewPresence.textContent =
+            player.presence === "in_game"
+                ? "In game"
+                : player.presence === "online"
+                    ? "Online"
+                    : "Offline";
+        profileViewPresence.dataset.presence =
+            player.presence || "offline";
+    }
+
+    profileViewJoined.textContent =
+        player.created_at
+            ? `Joined ${new Date(
+                player.created_at
+            ).toLocaleDateString(
+                undefined,
+                {
+                    year: "numeric",
+                    month: "short"
+                }
+            )}`
+            : "Joined recently";
+
+    profileStatRating.textContent =
+        player.rating;
+
+    profileStatWins.textContent =
+        player.wins;
+
+    profileStatLosses.textContent =
+        player.losses;
+
+    profileStatDraws.textContent =
+        player.draws;
+
+    const state =
+        player.friendship ||
+        "none";
+
+    profileFriendButton.dataset.state =
+        state;
+
+    profileFriendButton.disabled =
+        state === "outgoing" ||
+        state === "self";
+
+    profileFriendButton.classList.toggle(
+        "danger-button",
+        state === "friends"
+    );
+
+    profileFriendButton.classList.toggle(
+        "primary-button",
+        state !== "friends"
+    );
+
+    profileFriendButton.textContent =
+        state === "friends"
+            ? "Remove friend"
+            : socialRelationshipLabel(
+                state
+            );
+
+    profileMessageButton.classList.toggle(
+        "hidden",
+        state !== "friends"
+    );
+
+    profileWatchButton?.classList.toggle(
+        "hidden",
+        player.presence !== "in_game" ||
+        player.username === currentUser?.username
+    );
+
+    const blockState = player.block_state || "none";
+    if (profileBlockButton) {
+        profileBlockButton.classList.toggle(
+            "hidden",
+            state === "self"
+        );
+        profileBlockButton.textContent =
+            blockState === "blocked"
+                ? "Unblock"
+                : blockState === "blocked_by_them"
+                    ? "Unavailable"
+                    : "Block";
+        profileBlockButton.disabled =
+            blockState === "blocked_by_them";
+        profileBlockButton.dataset.state = blockState;
+    }
+
+    profileReportButton?.classList.toggle(
+        "hidden",
+        state === "self"
+    );
+
+    renderProfileRecentGames(
+        data.recentMatches
+    );
+}
+
+async function openPlayerProfile(
+    username
+) {
+    if (!currentUser) {
+        showLoginPage();
+        return;
+    }
+
+    showSocialPage(false);
+
+    socialWelcome.classList.remove(
+        "hidden"
+    );
+
+    socialWelcome.innerHTML =
+        '<div class="social-welcome-piece">♞</div><span class="section-kicker">LOADING</span><h2>Opening profile…</h2>';
+
+    playerProfilePanel.classList.add(
+        "hidden"
+    );
+
+    directMessagePanel.classList.add(
+        "hidden"
+    );
+
+    try {
+        const data =
+            await fetchJson(
+                `/api/players/${encodeURIComponent(
+                    username
+                )}`
+            );
+
+        renderPlayerProfile(data);
+    } catch (error) {
+        socialWelcome.classList.remove(
+            "hidden"
+        );
+
+        socialWelcome.innerHTML =
+            `<div class="social-welcome-piece">♞</div><h2>Could not open profile</h2><p>${escapeText(
+                error.message
+            )}</p>`;
+    }
+}
+
+async function respondToFriendRequest(
+    username,
+    action
+) {
+    try {
+        await fetchJson(
+            "/api/social/friends/respond",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
+                body: JSON.stringify({
+                    username,
+                    action
+                })
+            }
+        );
+
+        showToast(
+            action === "accept"
+                ? `${username} is now your friend.`
+                : "Friend request declined.",
+            action === "accept"
+                ? "success"
+                : "info"
+        );
+
+        await loadSocialLists();
+
+        if (
+            activeSocialProfile &&
+            activeSocialProfile.username
+                .toLowerCase() ===
+                username.toLowerCase()
+        ) {
+            await openPlayerProfile(
+                username
+            );
+        }
+    } catch (error) {
+        showToast(
+            error.message,
+            "error"
+        );
+    }
+}
+
+async function handleProfileFriendAction() {
+    if (!activeSocialProfile) {
+        return;
+    }
+
+    profileFriendButton.disabled = true;
+
+    const username =
+        activeSocialProfile.username;
+
+    const state =
+        activeSocialProfile.friendship;
+
+    try {
+        if (state === "none") {
+            await fetchJson(
+                "/api/social/friends/request",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+                    body: JSON.stringify({
+                        username
+                    })
+                }
+            );
+
+            showToast(
+                "Friend request sent.",
+                "success"
+            );
+        } else if (state === "incoming") {
+            await fetchJson(
+                "/api/social/friends/respond",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+                    body: JSON.stringify({
+                        username,
+                        action: "accept"
+                    })
+                }
+            );
+
+            showToast(
+                `${username} is now your friend.`,
+                "success"
+            );
+        } else if (state === "friends") {
+            await fetchJson(
+                `/api/social/friends/${encodeURIComponent(
+                    username
+                )}`,
+                {
+                    method: "DELETE"
+                }
+            );
+
+            showToast(
+                `${username} removed from friends.`,
+                "info"
+            );
+        } else {
+            return;
+        }
+
+        await Promise.all([
+            loadSocialLists(),
+            openPlayerProfile(username)
+        ]);
+    } catch (error) {
+        profileFriendButton.disabled = false;
+
+        showToast(
+            error.message,
+            "error"
+        );
+    }
+}
+
+function renderDirectMessages(
+    messages
+) {
+    dmMessages.innerHTML = "";
+
+    if (
+        !Array.isArray(messages) ||
+        messages.length === 0
+    ) {
+        dmMessages.innerHTML =
+            '<p class="social-empty-copy">No messages yet. Say hi.</p>';
+        return;
+    }
+
+    for (const message of messages) {
+        appendDirectMessage(
+            message,
+            false
+        );
+    }
+
+    dmMessages.scrollTop =
+        dmMessages.scrollHeight;
+}
+
+function appendDirectMessage(
+    message,
+    scroll = true
+) {
+    const empty =
+        dmMessages.querySelector(
+            ".social-empty-copy"
+        );
+
+    empty?.remove();
+
+    const bubble =
+        document.createElement("div");
+
+    bubble.className =
+        message.mine
+            ? "dm-bubble mine"
+            : "dm-bubble";
+
+    const body =
+        document.createElement("p");
+
+    body.textContent =
+        message.body;
+
+    const meta =
+        document.createElement("small");
+
+    const time =
+        message.created_at
+            ? new Date(
+                message.created_at
+            ).toLocaleTimeString(
+                [],
+                {
+                    hour: "numeric",
+                    minute: "2-digit"
+                }
+            )
+            : "";
+
+    meta.textContent =
+        message.mine
+            ? `You${time ? ` · ${time}` : ""}`
+            : `${message.sender || activeDmUsername}${time ? ` · ${time}` : ""}`;
+
+    bubble.append(
+        body,
+        meta
+    );
+
+    dmMessages.appendChild(
+        bubble
+    );
+
+    if (scroll) {
+        dmMessages.scrollTop =
+            dmMessages.scrollHeight;
+    }
+}
+
+async function openDirectMessages(
+    username
+) {
+    try {
+        const data =
+            await fetchJson(
+                `/api/social/messages/${encodeURIComponent(
+                    username
+                )}`
+            );
+
+        activeDmUsername =
+            data.friend.username;
+
+        activeSocialProfile = {
+            ...activeSocialProfile,
+            ...data.friend,
+            friendship: "friends"
+        };
+
+        socialWelcome.classList.add(
+            "hidden"
+        );
+
+        playerProfilePanel.classList.add(
+            "hidden"
+        );
+
+        directMessagePanel.classList.remove(
+            "hidden"
+        );
+
+        dmAvatar.textContent =
+            avatarSymbol(
+                data.friend.avatar_key,
+                data.friend.username
+            );
+
+        dmName.textContent =
+            data.friend.username;
+
+        dmRating.textContent =
+            `${data.friend.rating} Elo`;
+
+        renderDirectMessages(
+            data.messages
+        );
+
+        dmInput.focus();
+
+        loadSocialLists();
+        refreshNotifications();
+    } catch (error) {
+        showToast(
+            error.message,
+            "error"
+        );
+    }
+}
+
+async function sendDirectMessage() {
+    if (!activeDmUsername) {
+        return;
+    }
+
+    const text =
+        dmInput.value.trim();
+
+    if (!text) {
+        return;
+    }
+
+    dmInput.value = "";
+
+    try {
+        const data =
+            await fetchJson(
+                `/api/social/messages/${encodeURIComponent(
+                    activeDmUsername
+                )}`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+                    body: JSON.stringify({
+                        message: text
+                    })
+                }
+            );
+
+        appendDirectMessage(
+            data.message
+        );
+    } catch (error) {
+        dmInput.value = text;
+
+        showToast(
+            error.message,
+            "error"
+        );
+    }
+}
+
+function downloadTextFile(filename, text) {
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+}
+
+function renderReview(data) {
+    reviewSummary.innerHTML = "";
+    reviewMoves.innerHTML = "";
+
+    const order = ["Best", "Excellent", "Good", "Inaccuracy", "Mistake", "Blunder"];
+    for (const label of order) {
+        const count = Number(data?.summary?.[label] || 0);
+        if (!count) continue;
+        const item = document.createElement("div");
+        item.className = `review-summary-item review-${label.toLowerCase()}`;
+        item.innerHTML = `<strong>${count}</strong><span>${label}</span>`;
+        reviewSummary.appendChild(item);
+    }
+
+    for (const move of data.moves || []) {
+        const row = document.createElement("div");
+        row.className = "review-move-row";
+        const number = move.color === "white" ? `${move.moveNumber}.` : `${move.moveNumber}…`;
+        row.innerHTML = `
+            <span class="review-move-number">${number}</span>
+            <strong>${escapeText(move.san)}</strong>
+            <span class="review-class review-${String(move.classification).toLowerCase()}">${escapeText(move.classification)}</span>
+            <small>${Number(move.centipawnLoss || 0)} cp loss</small>
+            <span class="review-eval">${Number(move.evaluation || 0) >= 0 ? "+" : ""}${Number(move.evaluation || 0).toFixed(2)}</span>
+        `;
+        reviewMoves.appendChild(row);
+    }
+
+    reviewStatus.textContent = data.truncated
+        ? "Review complete. Only the first 120 plies were analyzed."
+        : "Review complete.";
+}
+
+async function reviewPgn(pgn) {
+    if (!pgn) {
+        showToast("No PGN is available for this game.", "error");
+        return;
+    }
+
+    reviewModal.classList.remove("hidden");
+    reviewStatus.textContent = "Stockfish is analyzing the game…";
+    reviewSummary.innerHTML = "";
+    reviewMoves.innerHTML = '<div class="review-loading">Analyzing moves…</div>';
+
+    try {
+        const data = await fetchJson("/api/analysis/review", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ pgn })
+        });
+        renderReview(data);
+    } catch (error) {
+        reviewStatus.textContent = error.message;
+        reviewMoves.innerHTML = "";
+    }
+}
+
+function createReviewBoard(fen) {
+    const root = document.createElement("div");
+    root.className = "review-board";
+
+    const placement = String(fen || "").split(" ")[0];
+    const ranks = placement.split("/");
+
+    if (ranks.length !== 8) {
+        root.textContent = "Final board unavailable.";
+        return root;
+    }
+
+    const typeMap = {
+        p: "pawn",
+        n: "knight",
+        b: "bishop",
+        r: "rook",
+        q: "queen",
+        k: "king"
+    };
+
+    for (let y = 0; y < 8; y++) {
+        const cells = [];
+        for (const char of ranks[y]) {
+            if (/\d/.test(char)) {
+                for (let i = 0; i < Number(char); i++) cells.push(null);
+            } else {
+                cells.push(char);
+            }
+        }
+
+        for (let x = 0; x < 8; x++) {
+            const square = document.createElement("span");
+            square.className = `review-board-square ${(x + y) % 2 === 0 ? "light" : "dark"}`;
+            const pieceCode = cells[x];
+
+            if (pieceCode) {
+                const lower = pieceCode.toLowerCase();
+                const type = typeMap[lower];
+                const color = pieceCode === lower ? "b" : "w";
+                if (type) {
+                    const image = document.createElement("img");
+                    image.src = `assets/pieces/${type}-${color}.svg`;
+                    image.alt = "";
+                    image.draggable = false;
+                    square.appendChild(image);
+                }
+            }
+
+            root.appendChild(square);
+        }
+    }
+
+    return root;
+}
+
+async function openStoredMatch(matchId) {
+    try {
+        const data = await fetchJson(`/api/matches/${encodeURIComponent(matchId)}`);
+        const match = data.match || {};
+        lastGamePgn = match.pgn || "";
+        lastGameFen = match.final_fen || "";
+        reviewModal.classList.remove("hidden");
+
+        const winnerLabel =
+            match.winner_color === "white"
+                ? `${match.white?.username || "White"} won`
+                : match.winner_color === "black"
+                    ? `${match.black?.username || "Black"} won`
+                    : "Draw";
+
+        reviewStatus.textContent =
+            `${winnerLabel} · ${formatReason(match.reason)} · ${new Date(match.ended_at || match.created_at || Date.now()).toLocaleString()}`;
+
+        reviewSummary.innerHTML = `
+            <div class="stored-match-meta">
+                <div><span>White</span><strong>${escapeText(match.white?.username || "White")}</strong><small>${Number(match.white?.rating_after ?? match.white?.rating ?? 0)} Elo</small></div>
+                <div><span>Black</span><strong>${escapeText(match.black?.username || "Black")}</strong><small>${Number(match.black?.rating_after ?? match.black?.rating ?? 0)} Elo</small></div>
+            </div>
+            <div class="stored-match-actions">
+                <button id="stored-review-run" class="primary-button" type="button">Analyze with Stockfish</button>
+                <button id="stored-fen-copy" class="secondary-button" type="button">Copy FEN</button>
+                <button id="stored-pgn-export" class="secondary-button" type="button">Export PGN</button>
+            </div>
+        `;
+
+        reviewMoves.innerHTML = "";
+        if (lastGameFen) {
+            reviewMoves.appendChild(createReviewBoard(lastGameFen));
+        }
+        const pgn = document.createElement("pre");
+        pgn.className = "pgn-preview";
+        pgn.textContent = lastGamePgn || "No PGN stored.";
+        reviewMoves.appendChild(pgn);
+
+        document.getElementById("stored-review-run")?.addEventListener("click", function() {
+            reviewPgn(lastGamePgn);
+        });
+        document.getElementById("stored-fen-copy")?.addEventListener("click", async function() {
+            if (!lastGameFen) return;
+            await navigator.clipboard.writeText(lastGameFen);
+            showToast("FEN copied.", "success");
+        });
+        document.getElementById("stored-pgn-export")?.addEventListener("click", function() {
+            downloadTextFile(`pulse-chess-${matchId}.pgn`, lastGamePgn);
+        });
+    } catch (error) {
+        showToast(error.message, "error");
+    }
+}
+
+function showSocialPage(
+    refresh = true
+) {
+    if (!currentUser) {
+        showLoginPage();
+
+        loginError.textContent =
+            "Log in to search players and use friends.";
+
+        return;
+    }
+
+    hideAllPages();
+    showNavbar();
+    setFooterVisible(true);
+
+    socialPage.classList.remove(
+        "hidden"
+    );
+
+    setActiveNav(
+        "players-button"
+    );
+
+    stopMatchMusic();
+
+    if (refresh) {
+        loadSocialLists();
+    }
+}
+
 // Start
 
 loadSettings();
 initializeCountryLeaderboardOptions();
+renderHomePreviewBoard();
+initializeCookieBanner();
 
 populateBoard(8, 8);
 updateCheckHighlight();
@@ -5981,51 +8620,6 @@ document.addEventListener(
     { once: false }
 );
 
-let lastMouseClientX =
-    window.innerWidth / 2;
-
-let lastMouseClientY =
-    window.innerHeight / 4;
-
-function updateMouseGlow() {
-    if (!settings.motion) {
-        return;
-    }
-
-    document.documentElement.style.setProperty(
-        "--mouse-x",
-        `${lastMouseClientX}px`
-    );
-
-    document.documentElement.style.setProperty(
-        "--mouse-y",
-        `${lastMouseClientY}px`
-    );
-}
-
-document.addEventListener(
-    "pointermove",
-    function(event) {
-        lastMouseClientX = event.clientX;
-        lastMouseClientY = event.clientY;
-        updateMouseGlow();
-    }
-);
-
-window.addEventListener(
-    "scroll",
-    updateMouseGlow,
-    { passive: true }
-);
-
-window.addEventListener(
-    "resize",
-    updateMouseGlow
-);
-
-updateMouseGlow();
-
-
 // Navigation
 
 logoButton.addEventListener(
@@ -6041,6 +8635,11 @@ homeButton.addEventListener(
 leaderboardButton.addEventListener(
     "click",
     showLeaderboardPage
+);
+
+playersButton.addEventListener(
+    "click",
+    showSocialPage
 );
 
 heroLeaderboardButton.addEventListener(
@@ -6085,19 +8684,135 @@ navPlayButton.addEventListener(
     }
 );
 
+function openQuickMatchModal() {
+    if (!currentUser) {
+        showLoginPage();
+        loginError.textContent = "Log in to play online.";
+        return;
+    }
+
+    quickMatchModal?.classList.remove("hidden");
+}
+
 heroPlayButton.addEventListener(
     "click",
-    startQuickMatch
+    openQuickMatchModal
 );
 
 playButton.addEventListener(
     "click",
-    startQuickMatch
+    openQuickMatchModal
 );
 
-botButton.addEventListener(
+quickMatchModalClose?.addEventListener("click", function() {
+    quickMatchModal.classList.add("hidden");
+});
+
+quickMatchModal?.addEventListener("click", function(event) {
+    if (event.target === quickMatchModal) {
+        quickMatchModal.classList.add("hidden");
+    }
+});
+
+for (const button of timeControlButtons) {
+    button.addEventListener("click", function() {
+        selectedTimeControl = button.dataset.timeControl || "rapid10";
+        startQuickMatch(selectedTimeControl);
+    });
+}
+
+botButton?.addEventListener(
     "click",
-    startBotMatch
+    function() {
+        if (!currentUser) {
+            showLoginPage();
+            loginError.textContent =
+                "Log in to play the bot.";
+            return;
+        }
+
+        botModal.classList.remove(
+            "hidden"
+        );
+    }
+);
+
+botModalClose?.addEventListener(
+    "click",
+    function() {
+        botModal.classList.add(
+            "hidden"
+        );
+    }
+);
+
+for (const button of botDifficultyButtons) {
+    button.addEventListener(
+        "click",
+        function() {
+            startBotMatch(
+                button.dataset.botDifficulty
+            );
+        }
+    );
+}
+
+privacyButton.addEventListener("click", showPrivacyPage);
+termsButton?.addEventListener("click", function() { showLegalPage(termsPage); });
+cookiesButton?.addEventListener("click", function() { showLegalPage(cookiesPage); });
+fairPlayButton?.addEventListener("click", function() { showLegalPage(fairPlayPage); });
+privacyBackButton.addEventListener("click", showHomePage);
+for (const button of legalHomeButtons) {
+    button.addEventListener("click", showHomePage);
+}
+
+resultReview?.addEventListener("click", function() {
+    reviewPgn(lastGamePgn);
+});
+
+resultCopyFen?.addEventListener("click", async function() {
+    if (!lastGameFen) {
+        showToast("No FEN is available.", "error");
+        return;
+    }
+    try {
+        await navigator.clipboard.writeText(lastGameFen);
+        showToast("FEN copied.", "success");
+    } catch (error) {
+        showToast("Could not copy FEN.", "error");
+    }
+});
+
+resultExportPgn?.addEventListener("click", function() {
+    if (!lastGamePgn) {
+        showToast("No PGN is available.", "error");
+        return;
+    }
+    downloadTextFile(`pulse-chess-${Date.now()}.pgn`, lastGamePgn);
+});
+
+reviewClose?.addEventListener("click", function() {
+    reviewModal.classList.add("hidden");
+});
+
+reviewModal?.addEventListener("click", function(event) {
+    if (event.target === reviewModal) {
+        reviewModal.classList.add("hidden");
+    }
+});
+
+cookieAccept.addEventListener(
+    "click",
+    function() {
+        saveCookieChoice("accepted");
+    }
+);
+
+cookieReject.addEventListener(
+    "click",
+    function() {
+        saveCookieChoice("rejected");
+    }
 );
 
 
@@ -6110,6 +8825,21 @@ cancelButton.addEventListener(
         showHomePage();
     }
 );
+
+drawButton?.addEventListener("click", function() {
+    if (!inMatch || gameOver || isSpectating) return;
+    socket.emit("offer-draw");
+});
+
+drawAcceptButton?.addEventListener("click", function() {
+    drawOfferModal.classList.add("hidden");
+    socket.emit("respond-draw", true);
+});
+
+drawDeclineButton?.addEventListener("click", function() {
+    drawOfferModal.classList.add("hidden");
+    socket.emit("respond-draw", false);
+});
 
 resignButton.addEventListener(
     "click",
@@ -6128,7 +8858,9 @@ resignButton.addEventListener(
 returnButton.addEventListener(
     "click",
     function() {
-        if (
+        if (isSpectating) {
+            socket.emit("leave-spectate");
+        } else if (
             inMatch &&
             !gameOver
         ) {
@@ -6139,6 +8871,7 @@ returnButton.addEventListener(
         gameOver = true;
         playerColor = null;
         currentMatch = null;
+        isSpectating = false;
 
         clearMoves();
         restoreSelectedSquare();
@@ -6353,7 +9086,11 @@ createPrivateButton.addEventListener(
     "click",
     function() {
         privateError.textContent = "";
-        socket.emit("create-private");
+        socket.emit("create-private", {
+            timeControl:
+                privateTimeControl?.value ||
+                "rapid10"
+        });
     }
 );
 
@@ -6447,11 +9184,6 @@ resultRematch.addEventListener(
 
         currentMatch = null;
         playerColor = null;
-
-        if (previousMode === "bot") {
-            startBotMatch();
-            return;
-        }
 
         if (previousMode === "private") {
             showHomePage();
@@ -6575,6 +9307,12 @@ signupForm.addEventListener(
                 );
             }
 
+            if (data.verificationRequired) {
+                showVerifyEmailPage(data.email);
+                showToast("Verification code sent.", "success");
+                return;
+            }
+
             currentUser = data.user;
             updateAuthUI();
             reconnectSocketForSession();
@@ -6600,6 +9338,16 @@ signupForm.addEventListener(
         }
     }
 );
+
+verifyEmailForm?.addEventListener("submit", async function(event) {
+    event.preventDefault(); verifyEmailError.textContent = "";
+    try {
+        const response = await fetch("/api/auth/verify-email", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: pendingVerificationEmail, code: verificationCode.value }) });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Verification failed.");
+        currentUser = data.user; updateAuthUI(); reconnectSocketForSession(); showToast("Email verified. Welcome to Pulse Chess.", "success"); showHomePage(); loadHomeLeaderboard(); loadRecentMatches();
+    } catch (error) { verifyEmailError.textContent = error.message; }
+});
 
 
 // Email Login
@@ -6731,6 +9479,152 @@ logoutButton.addEventListener(
 );
 
 
+// Notifications
+
+notificationButton?.addEventListener(
+    "click",
+    function(event) {
+        event.stopPropagation();
+
+        const willOpen =
+            notificationPanel.classList.contains(
+                "hidden"
+            );
+
+        notificationPanel.classList.toggle(
+            "hidden",
+            !willOpen
+        );
+
+        notificationButton.setAttribute(
+            "aria-expanded",
+            String(willOpen)
+        );
+
+        if (willOpen) {
+            refreshNotifications();
+        }
+    }
+);
+
+notificationPlayersButton?.addEventListener(
+    "click",
+    function() {
+        closeNotificationPanel();
+        showSocialPage();
+    }
+);
+
+document.addEventListener(
+    "click",
+    function(event) {
+        if (
+            notificationWrap &&
+            !notificationWrap.contains(event.target)
+        ) {
+            closeNotificationPanel();
+        }
+    }
+);
+
+// Social
+
+playerSearchButton?.addEventListener(
+    "click",
+    searchPlayers
+);
+
+playerSearchInput?.addEventListener(
+    "keydown",
+    function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            searchPlayers();
+        }
+    }
+);
+
+profileFriendButton?.addEventListener(
+    "click",
+    handleProfileFriendAction
+);
+
+profileMessageButton?.addEventListener(
+    "click",
+    function() {
+        if (activeSocialProfile) {
+            openDirectMessages(
+                activeSocialProfile.username
+            );
+        }
+    }
+);
+
+profileWatchButton?.addEventListener("click", function() {
+    if (activeSocialProfile) {
+        socket.emit("spectate-user", activeSocialProfile.username);
+    }
+});
+
+profileBlockButton?.addEventListener("click", async function() {
+    if (!activeSocialProfile) return;
+    const state = profileBlockButton.dataset.state || "none";
+    const username = activeSocialProfile.username;
+
+    if (state !== "blocked" && !window.confirm(`Block ${username}? This removes the friendship and stops direct messages.`)) {
+        return;
+    }
+
+    try {
+        await fetchJson(`/api/social/block/${encodeURIComponent(username)}`, {
+            method: state === "blocked" ? "DELETE" : "POST"
+        });
+        showToast(state === "blocked" ? "Player unblocked." : "Player blocked.", "success");
+        openPlayerProfile(username);
+        loadSocialLists();
+    } catch (error) {
+        showToast(error.message, "error");
+    }
+});
+
+profileReportButton?.addEventListener("click", async function() {
+    if (!activeSocialProfile) return;
+    const category = window.prompt("Report reason: cheating, harassment, spam, username, or other", "cheating");
+    if (category === null) return;
+    const details = window.prompt("Optional details", "") ?? "";
+
+    try {
+        await fetchJson(`/api/social/report/${encodeURIComponent(activeSocialProfile.username)}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ category, details })
+        });
+        showToast("Report submitted.", "success");
+    } catch (error) {
+        showToast(error.message, "error");
+    }
+});
+
+dmBackButton?.addEventListener(
+    "click",
+    function() {
+        if (activeSocialProfile) {
+            openPlayerProfile(
+                activeSocialProfile.username
+            );
+        }
+    }
+);
+
+dmForm?.addEventListener(
+    "submit",
+    function(event) {
+        event.preventDefault();
+        sendDirectMessage();
+    }
+);
+
+
 // Settings
 
 settingMusic.addEventListener(
@@ -6792,6 +9686,97 @@ settingVolume.addEventListener(
             Number(settingVolume.value);
 
         saveSettings();
+    }
+);
+
+for (
+    const button of
+    settingsAvatarGrid.querySelectorAll(
+        "[data-avatar]"
+    )
+) {
+    button.addEventListener(
+        "click",
+        function() {
+            selectedAvatarKey =
+                button.dataset.avatar;
+
+            syncAvatarChoices();
+        }
+    );
+}
+
+saveProfileButton.addEventListener(
+    "click",
+    async function() {
+        if (!currentUser) {
+            return;
+        }
+
+        settingsProfileMessage.textContent = "";
+
+        setButtonLoading(
+            saveProfileButton,
+            true,
+            "Saving…"
+        );
+
+        try {
+            const response =
+                await fetch(
+                    "/api/account/profile",
+                    {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+                        body: JSON.stringify({
+                            avatarKey:
+                                selectedAvatarKey,
+                            bio:
+                                settingsBio.value
+                                    .trim()
+                        })
+                    }
+                );
+
+            const data =
+                await response.json();
+
+            if (!response.ok) {
+                throw new Error(
+                    data.error ||
+                    "Could not update profile."
+                );
+            }
+
+            currentUser = data.user;
+            updateAuthUI();
+            syncAccountSettings();
+
+            settingsProfileMessage.textContent =
+                "Profile updated.";
+
+            settingsProfileMessage.className =
+                "form-message success";
+
+            showToast(
+                "Profile updated.",
+                "success"
+            );
+        } catch (error) {
+            settingsProfileMessage.textContent =
+                error.message;
+
+            settingsProfileMessage.className =
+                "form-message error";
+        } finally {
+            setButtonLoading(
+                saveProfileButton,
+                false
+            );
+        }
     }
 );
 
@@ -6866,9 +9851,39 @@ saveUsernameButton.addEventListener(
                 saveUsernameButton,
                 false
             );
+            updateUsernameCooldown();
         }
     }
 );
+
+signoutAllButton?.addEventListener("click", async function() {
+    if (!window.confirm("Sign out every Pulse Chess session, including this one?")) return;
+    try {
+        await fetchJson("/api/account/signout-all", { method: "POST" });
+        currentUser = null;
+        updateAuthUI();
+        reconnectSocketForSession();
+        showHomePage();
+        showToast("All sessions signed out.", "success");
+    } catch (error) {
+        accountControlMessage.textContent = error.message;
+    }
+});
+
+deleteAccountButton?.addEventListener("click", async function() {
+    const typed = window.prompt("This permanently deletes your account. Type DELETE to continue.");
+    if (typed !== "DELETE") return;
+    try {
+        await fetchJson("/api/account", { method: "DELETE" });
+        currentUser = null;
+        updateAuthUI();
+        reconnectSocketForSession();
+        showHomePage();
+        showToast("Account deleted.", "info");
+    } catch (error) {
+        accountControlMessage.textContent = error.message;
+    }
+});
 
 leaderboardScope.addEventListener(
     "change",

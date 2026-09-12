@@ -67,10 +67,9 @@ Create a `.env` file and never commit it:
 
 ```text
 DATABASE_URL=your_postgresql_connection_string
+DATABASE_URL_POOLED=your_pooled_postgresql_connection_string
 SESSION_SECRET=at_least_32_random_characters
-GOOGLE_CLIENT_ID=your_google_client_id
 BREVO_API_KEY=your_brevo_api_key
-NODE_ENV=development
 ```
 
 Install and start:

@@ -2,6 +2,20 @@
 
 Pulse Chess is a real-time browser chess platform built with vanilla JavaScript, Node.js, Express, Socket.IO, PostgreSQL, chess.js, and Stockfish 18.
 
+## Demo
+
+The final interface is designed around a clean, dark chess experience:
+
+| Home | Matchmaking |
+| --- | --- |
+| ![Pulse Chess home](assets/demo/home.gif) | ![Pulse Chess matchmaking](assets/demo/matchmaking.gif) |
+
+| Leaderboards | Game result |
+| --- | --- |
+| ![Pulse Chess leaderboards](assets/demo/leaderboards.gif) | ![Pulse Chess win result](assets/demo/win-result.gif) |
+
+These animations are included in `assets/demo/` so GitHub renders them directly in the repository README.
+
 ## Final release features
 
 ### Chess

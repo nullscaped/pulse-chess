@@ -576,14 +576,14 @@ function normalizeModeratedText(value) {
         .normalize("NFKD")
         .replace(/\p{M}/gu, "")
         .toLowerCase()
-        .replace(/[аαɑ]/g, "a")
-        .replace(/[еε]/g, "e")
-        .replace(/[іι]/g, "i")
-        .replace(/[оο]/g, "o")
-        .replace(/[сϲ]/g, "c")
-        .replace(/[хχ]/g, "x")
-        .replace(/[ѕ]/g, "s")
-        .replace(/[ј]/g, "j")
+        .replace(/[Ð°Î±É‘]/g, "a")
+        .replace(/[ÐµÎµ]/g, "e")
+        .replace(/[Ñ–Î¹]/g, "i")
+        .replace(/[Ð¾Î¿]/g, "o")
+        .replace(/[ÑÏ²]/g, "c")
+        .replace(/[Ñ…Ï‡]/g, "x")
+        .replace(/[Ñ•]/g, "s")
+        .replace(/[Ñ˜]/g, "j")
         .replace(/ph/g, "f")
         .replace(/[0]/g, "o")
         .replace(/[1!|]/g, "i")
@@ -1325,36 +1325,6 @@ app.post("/api/auth/google", loginLimiter, async function(req, res) {
     }
 });
 
-app.get("/api/auth/me", async function(req, res) {
-    try {
-        if (!req.session.userId) {
-            return res.json({ user: null });
-        }
-
-        const user =
-            await getUserById(
-                req.session.userId
-            );
-
-        if (!user) {
-            req.session.destroy(function() {});
-            return res.json({ user: null });
-        }
-
-        return res.json({
-            user: accountUser(user)
-        });
-    } catch (error) {
-        console.error(
-            "Session check failed:",
-            error
-        );
-
-        return res.status(500).json({
-            error: "Failed to check session."
-        });
-    }
-});
 
 app.post("/api/auth/logout", function(req, res) {
     req.session.destroy(function(error) {
@@ -2566,10 +2536,45 @@ app.delete(
     }
 );
 
+app.get("/api/auth/me", async function(req, res) {
+    try {
+        if (!req.session.userId) {
+            return res.json({ user: null });
+        }
+
+        const user =
+            await getUserById(
+                req.session.userId
+            );
+
+        if (!user) {
+            req.session.destroy(function() {});
+            return res.json({ user: null });
+        }
+
+        return res.json({
+            user: accountUser(user)
+        });
+    } catch (error) {
+        console.error(
+            "Session check failed:",
+            error
+        );
+
+        return res.status(500).json({
+            error: "Failed to check session."
+        });
+    }
+});
+
 app.get(
     "/api/matches/:id",
     requireAuth,
-    async function(req, res) {
+    async function(req, res, next) {
+        if (req.params.id === "me") {
+            return next();
+        }
+
         try {
             const matchId = String(req.params.id || "");
             if (!/^\d+$/.test(matchId)) {
@@ -5306,10 +5311,10 @@ io.on("connection", function(socket) {
         }
 
         const allowedEmojis = new Set([
-            "😂", "😭", "🔥", "💀", "😎",
-            "🤝", "👏", "❤️", "😡", "🤔",
-            "👀", "🎯", "⚡", "👑", "🫡",
-            "😈", "🥶", "😱", "🤯", "GG"
+            "ðŸ˜‚", "ðŸ˜­", "ðŸ”¥", "ðŸ’€", "ðŸ˜Ž",
+            "ðŸ¤", "ðŸ‘", "â¤ï¸", "ðŸ˜¡", "ðŸ¤”",
+            "ðŸ‘€", "ðŸŽ¯", "âš¡", "ðŸ‘‘", "ðŸ«¡",
+            "ðŸ˜ˆ", "ðŸ¥¶", "ðŸ˜±", "ðŸ¤¯", "GG"
         ]);
 
         const emoji = String(rawEmoji || "").trim();

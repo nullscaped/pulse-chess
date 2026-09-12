@@ -1,10 +1,35 @@
 # Pulse Chess
 
-Pulse Chess is a real-time browser chess platform built with vanilla JavaScript, Node.js, Express, Socket.IO, PostgreSQL, chess.js, and Stockfish 18.
+**[Play the live demo →](https://pulse-chess.onrender.com/)**
+
+Pulse Chess is a full-stack, real-time browser chess platform built from scratch as a portfolio project. It combines live player-versus-player games, ranked matchmaking, private rooms, practice bots, persistent game history, and post-game analysis in one responsive web application.
+
+The project was designed to demonstrate practical software-engineering skills beyond a static interface: real-time event handling, server-authoritative game logic, relational data modeling, authentication, API integrations, security controls, and production deployment.
+
+## What I built
+
+- Real-time multiplayer chess with Socket.IO and server-side move validation
+- Ranked matchmaking, private rooms, clocks, increments, rematches, and reconnect handling
+- Stockfish-powered practice bots and post-game position review
+- PostgreSQL-backed accounts, ratings, match history, friendships, direct messages, and notifications
+- Email verification through Brevo and Google sign-in
+- A responsive dark interface with SVG chess pieces, board themes, animations, and mobile support
+
+## Technology
+
+**Frontend:** HTML, CSS, vanilla JavaScript, SVG
+
+**Backend:** Node.js, Express, Socket.IO
+
+**Data and chess:** PostgreSQL, `pg`, `chess.js`, Stockfish 18
+
+**Authentication and security:** Argon2, server-side sessions, Helmet, rate limiting, input validation, profanity filtering, and parameterized SQL queries
+
+**Deployment:** Render
 
 ## Demo
 
-The final interface is designed around a clean, dark chess experience:
+The final interface is designed around a clean, dark chess experience. The four animations below are included in `assets/demo/` so GitHub renders them directly in the repository README:
 
 ### Home
 
@@ -22,9 +47,7 @@ The final interface is designed around a clean, dark chess experience:
 
 ![Pulse Chess win result](assets/demo/win-result.gif)
 
-These animations are included in `assets/demo/` so GitHub renders them directly in the repository README.
-
-## Final release features
+## Features
 
 ### Chess
 
